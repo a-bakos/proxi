@@ -44,6 +44,15 @@ var lastCommand = document.querySelector(".last-command");
 var lastCommandMessage = document.createElement("p");
 lastCommand.appendChild(lastCommandMessage);
 
+// Function for providing voice feedback:
+function voiceFeedback(feedbackString, pitch = 1, rate = 1.25) {
+  var commandFeedback = new SpeechSynthesisUtterance();
+  commandFeedback.text = feedbackString;
+  commandFeedback.pitch = pitch;
+  commandFeedback.lang = 'en-US';
+  commandFeedback.rate = rate;
+  speechSynthesis.speak(commandFeedback);
+}
 
 if (annyang) {
 
@@ -55,10 +64,24 @@ if (annyang) {
       var url = "https://www.google.co.uk/";
       myWindow = window.open(url, "myWindow");
       lastCommandMessage.innerHTML = "Search opened";
+      voiceFeedback("Opening search.");
     },
     'close search': function() {
       myWindow.close();
-      lastCommandMessage.innerHTML = "Search closed";
+      lastCommandMessage.innerHTML = "Search window closed";
+      voiceFeedback("Closing search.");
+    },
+
+    'thank you': function() {
+      voiceFeedback("You're welcome!");
+    },
+
+    'stop': function() {
+      voiceFeedback("I'm stopping.");
+    },
+
+    'a, for': function() {
+      voiceFeedback("alpha.", 1, 1);
     }
   };
 
