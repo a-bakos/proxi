@@ -1,0 +1,34 @@
+/* line 3, C:/Git/ai/sass/style.scss */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* line 9, C:/Git/ai/sass/style.scss */
+body {
+  font-size: 20px;
+}
+
+/* line 13, C:/Git/ai/sass/style.scss */
+.status-bar {
+  background: rgba(255, 0, 0, 0.15);
+}
+
+/* line 17, C:/Git/ai/sass/style.scss */
+.last-command {
+  padding: 1%;
+  font-size: 200%;
+}
+
+/* line 21, C:/Git/ai/sass/style.scss */
+.last-command p {
+  display: inline-block;
+}
+
+/* line 25, C:/Git/ai/sass/style.scss */
+.last-command-title {
+  color: grey;
+}
+
+/*# sourceMappingURL=../style.map */

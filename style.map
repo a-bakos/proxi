@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "sass/style.css",
+	"sources": [
+		"sass/style.scss"
+	],
+	"sourcesContent": [
+		"@charset \"UTF-8\";\r\n\r\n*,\r\n*:before,\r\n*:after {\r\n  box-sizing: border-box;\r\n  }\r\n\r\nbody {\r\n  font-size: 20px;\r\n  }\r\n\r\n.status-bar {\r\n  background: rgba(255,0,0,0.15);\r\n  }\r\n\r\n.last-command {\r\n  padding: 1%;\r\n  font-size: 200%;\r\n\r\n  p {\r\n    display: inline-block;\r\n    }\r\n\r\n  &-title {\r\n    color: grey;\r\n    }\r\n\r\n  } // .last-command\r\n\r\n.datetime-display {}"
+	],
+	"mappings": ";AAEA,AAAA,CAAC;AACD,AAAC,CAAA,AAAA,OAAO;AACR,AAAC,CAAA,AAAA,MAAM,CAAC;EACN,UAAU,EAAE,UAAW;CACtB;;;AAEH,AAAA,IAAI,CAAC;EACH,SAAS,EAAE,IAAK;CACf;;;AAEH,AAAA,WAAW,CAAC;EACV,UAAU,EAAE,qBAAI;CACf;;;AAEH,AAAA,aAAa,CAAC;EACZ,OAAO,EAAE,EAAG;EACZ,SAAS,EAAE,IAAK;CAUf;;;AAZH,AAIE,aAJW,CAIX,CAAC,CAAC;EACA,OAAO,EAAE,YAAa;CACrB;;;AANL,AAAA,mBAAa,CAQH;EACN,KAAK,EAAE,IAAK;CACX",
+	"names": []
+}

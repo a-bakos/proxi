@@ -5,10 +5,31 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ai</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
   </head>
   <body>
-    <h1>AI</h1>
+    <div class="container">
+      <div class="status-bar">
+
+        <div class="datetime-display">
+          <p>
+            <span class="clock-time"></span>
+            <span class="clock-date"></span>
+          </p>
+        </div>
+
+        <div class="last-command">
+          <p class="last-command-title">Last command:&nbsp;</p>
+        </div>
+
+      </div> <!-- .status-bar -->
+
+    </div> <!-- .container -->
+    <script src="script.js"></script>
   </body>
 </html>
