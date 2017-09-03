@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/**
+ * General
+ */
 *,
 *:before,
 *:after {
@@ -10,22 +13,39 @@ body {
   font-size: 20px;
   }
 
+/**
+ * Status bar and its elements
+ */
 .status-bar {
   background: rgba(255,0,0,0.15);
   }
 
-.last-command {
-  padding: 1%;
-  font-size: 200%;
+/**
+ * Last commands section
+ */
+.last-command-container {
 
-  p {
-    display: inline-block;
+  .last-command {
+    &-list {
+      padding: 1%;
+      font-size: 50%;
+    }
+    
+    &-item:first-child {
+      color: green;
+      background: white;
+      font-size: 200%;
     }
 
-  &-title {
-    color: grey;
-    }
+    &-title {
+      color: grey;
+      }
+    } // .last-command
 
-  } // .last-command
+  } // .last-command-container
 
+
+/**
+ * Current date + time display
+ */
 .datetime-display {}

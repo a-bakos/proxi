@@ -1,34 +1,49 @@
-/* line 3, C:/Git/ai/sass/style.scss */
+/**
+ * General
+ */
+/* line 6, C:/Git/ai/sass/style.scss */
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-/* line 9, C:/Git/ai/sass/style.scss */
+/* line 12, C:/Git/ai/sass/style.scss */
 body {
   font-size: 20px;
 }
 
-/* line 13, C:/Git/ai/sass/style.scss */
+/**
+ * Status bar and its elements
+ */
+/* line 19, C:/Git/ai/sass/style.scss */
 .status-bar {
   background: rgba(255, 0, 0, 0.15);
 }
 
-/* line 17, C:/Git/ai/sass/style.scss */
-.last-command {
+/**
+ * Last commands section
+ */
+/* line 29, C:/Git/ai/sass/style.scss */
+.last-command-container .last-command-list {
   padding: 1%;
+  font-size: 50%;
+}
+
+/* line 34, C:/Git/ai/sass/style.scss */
+.last-command-container .last-command-item:first-child {
+  color: green;
+  background: white;
   font-size: 200%;
 }
 
-/* line 21, C:/Git/ai/sass/style.scss */
-.last-command p {
-  display: inline-block;
-}
-
-/* line 25, C:/Git/ai/sass/style.scss */
-.last-command-title {
+/* line 40, C:/Git/ai/sass/style.scss */
+.last-command-container .last-command-title {
   color: grey;
 }
+
+/**
+ * Current date + time display
+ */
 
 /*# sourceMappingURL=../style.map */
