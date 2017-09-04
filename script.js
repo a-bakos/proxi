@@ -255,8 +255,6 @@ function removeAudioPlayer(targetLocation = sideScreen1) {
   targetLocation.removeChild(audioPlayerContainer);
 }
 
-//buildAudioPlayer();
-
 
 function playAudio() {
   var music = document.querySelector(".music");
@@ -264,12 +262,15 @@ function playAudio() {
   if (music.paused) {
     music.play();
   }
-  else {
+}
+
+function pauseAudio() {
+  var music = document.querySelector(".music");
+
+  if (music.play) {
     music.pause();
   }
 }
-
-
 
 
 
@@ -369,19 +370,26 @@ if (annyang) {
       voiceFeedback("ok");
       buildAudioPlayer();
     },
+
     'play music': function() {
       if (audioPlayerIsOpen === true) {
         voiceFeedback("playing music");
         playAudio(); // autoplay for testing
       }
-      // else section does not work yet
       else {
-        voiceFeedback("open player first");
+        voiceFeedback("open the player first");
       }
     },
+
+    'pause music': function() {
+      voiceFeedback("pausing music");
+      pauseAudio();
+    },
+
     'close audio player': function() {
       voiceFeedback("closing audio player");
       removeAudioPlayer();
+      audioPlayerIsOpen = false;
     },
 
 
