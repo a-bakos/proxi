@@ -369,27 +369,32 @@ if (annyang) {
       audioPlayerIsOpen = true;
       voiceFeedback("ok");
       buildAudioPlayer();
+      appendLastCommand("Open audio player")
     },
 
     'play music': function() {
       if (audioPlayerIsOpen === true) {
         voiceFeedback("playing music");
         playAudio(); // autoplay for testing
+        appendLastCommand("Play music")
       }
       else {
         voiceFeedback("open the player first");
+        appendLastCommand("Warning: open the player first")
       }
     },
 
     'pause music': function() {
       voiceFeedback("pausing music");
       pauseAudio();
+      appendLastCommand("Music paused")
     },
 
     'close audio player': function() {
       voiceFeedback("closing audio player");
       removeAudioPlayer();
       audioPlayerIsOpen = false;
+      appendLastCommand("Close audio player")
     },
 
 
