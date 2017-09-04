@@ -9,14 +9,14 @@
 - also utilise php for form validation + file reading, saving
 	- plus, look into node js, which can be used instead of php
 - find a name for the project
-- reload / refresh / empty memory
+- [done] reload / refresh / empty memory
 - save img / files
 - overall volume voice control
 - status bar:
 	- location
 	- listening status
 	- $_SERVER details
-	- date / time
+	- [done] date / time
 - media player, <audio>, <video>
 - notepad:
 	- eg. shopping list

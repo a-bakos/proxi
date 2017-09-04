@@ -1,5 +1,85 @@
 "use strict";
 
+
+// DOM element hooks
+
+// Main screens
+var screen1 = document.querySelector(".main-action-screen-1");
+var screen2 = document.querySelector(".main-action-screen-2");
+// Side screens
+var screen3 = document.querySelector(".side-screen-1");
+var screen4 = document.querySelector(".side-screen-2");
+// Status indicator
+var statusLed = document.querySelector(".status-led");
+var statusText = document.querySelector(".status-text");
+
+// Location detection
+var userLocation = document.querySelector(".location");
+var userLocationLatitude = document.querySelector(".location-latitude");
+var userLocationLongitude = document.querySelector(".location-longitude");
+var userLocationAltitude = document.querySelector(".location-altitude");
+var userLocationAccuracy = document.querySelector(".location-accuracy");
+var userLocationAltitudeAccuracy = document.querySelector(".location-altitude-accuracy");
+var userLocationHeading = document.querySelector(".location-heading");
+var userLocationSpeed = document.querySelector(".location-speed");
+var userLocationTimestamp = document.querySelector(".location-timestamp");
+
+/**
+ * Detecting location using Geolocation API
+ */
+if (navigator.geolocation) {
+  // geolocation is available
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      /*
+      position is an object containing various information about
+      the acquired device location:
+      position = {
+          coords: {
+              latitude - Geographical latitude in decimal degrees.
+              longitude - Geographical longitude in decimal degrees.
+              altitude - Height in meters relative to sea level.
+              accuracy - Possible error margin for the coordinates in meters.
+              altitudeAccuracy - Possible error margin for the altitude in meters.
+              heading - The direction of the device in degrees relative to north.
+              speed - The velocity of the device in meters per second.
+          }
+          timestamp - The time at which the location was retrieved.
+      }
+      */
+      userLocationLatitude.innerHTML = position.coords.latitude;
+      userLocationLongitude.innerHTML = position.coords.longitude;
+      userLocationAltitude.innerHTML = position.coords.altitude;
+      userLocationAccuracy.innerHTML = position.coords.accuracy;
+      userLocationAltitudeAccuracy.innerHTML = position.coords.altitudeAccuracy;
+      userLocationHeading.innerHTML = position.coords.heading;
+      userLocationSpeed.innerHTML = position.coords.speed;
+
+      userLocationTimestamp.innerHTML = position.timestamp;
+    },
+    // Optional error callback
+    function(error){
+      userLocation.innerHTML = error.message;
+      /*
+      In the error object is stored the reason for the failed attempt:
+      error = {
+      code - Error code representing the type of error
+      1 - PERMISSION_DENIED
+      2 - POSITION_UNAVAILABLE
+      3 - TIMEOUT
+      message - Details about the error in human-readable format.
+      }
+      */
+    }
+  );
+}
+else {
+  // geolocation is not supported
+}
+
+
+
+
 /**
  * Clock -- date and time display
  * Function re-calls itself every 3 seconds.
@@ -40,19 +120,6 @@
 })();
 
 
-
-
-// DOM element hooks
-
-// Main screens
-var screen1 = document.querySelector(".main-action-screen-1");
-var screen2 = document.querySelector(".main-action-screen-2");
-// Side screens
-var screen3 = document.querySelector(".side-screen-1");
-var screen4 = document.querySelector(".side-screen-2");
-// Status indicator
-var statusLed = document.querySelector(".status-led");
-var statusText = document.querySelector(".status-text");
 
 
 
@@ -146,6 +213,7 @@ if (annyang) {
     'refresh': function() {
       voiceFeedback("reloading", 1, 1.5);
       document.location.reload(true); // Page reload. TRUE = reload current page from the server
+      appendLastCommand("Refresh.");
     },
 
     'test': function() {
