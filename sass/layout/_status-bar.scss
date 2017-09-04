@@ -1,0 +1,23 @@
+/**
+ * Status bar and its elements
+ */
+.status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $full-width;
+  height: $status-bar-height;
+  z-index: 10;
+  
+  display: grid;
+  grid-template-columns: repeat(5, calc(100% / 3));
+  
+  background: yellow;
+
+  &-item {
+    background: white;
+    font-family: monospace;
+    text-align: center;
+    border: 1px solid red;
+    }
+  }

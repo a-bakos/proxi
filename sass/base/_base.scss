@@ -1,0 +1,21 @@
+/**
+ * General layout rules + Overall structure
+ */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  }
+
+body {
+  width: $full-width;
+  font-size: 20px; // base font size
+  }
+
+// Everything is contained within this element
+.container {
+  width: $full-width;
+  height: $full-height;
+  }

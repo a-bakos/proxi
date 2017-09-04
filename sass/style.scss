@@ -1,126 +1,17 @@
 @charset "UTF-8";
 
-$full-width: 100vw;
-$full-height: 100vh;
+@import "abstracts/variables";
 
-$status-bar-height: 5vh;
+@import "base/base";
 
-$tempbox-width: 5vw;
-$tempbox-height: ($full-height - $status-bar-height);
+@import "layout/status-bar";
+@import "layout/side-screen";
+@import "layout/main-screen-1";
+@import "layout/main-screen-2";
 
-$main-screen-width: 60vw;
-$main-screen-1-height: 60vh;
-$main-screen-2-height: (($full-height - $main-screen-1-height) - $status-bar-height);
-
-$side-screen-container-width: (($full-width - $tempbox-width) - $main-screen-width);
-$side-screen-container-height: ($full-height - $status-bar-height);
-
-$side-screen-height: ($side-screen-container-height / 3);
-
-/**
- * General layout rules + Overall structure
- */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  }
-
-body {
-  width: $full-width;
-  font-size: 20px; // base font size
-  }
-
-// Everything is contained within this element
-.container {
-  width: $full-width;
-  height: $full-height;
-  }
-
-/**
- * Status bar and its elements
- */
-.status-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: $full-width;
-  height: $status-bar-height;
-  z-index: 10;
-  
-  display: grid;
-  grid-template-columns: repeat(5, calc(100% / 3));
-  
-  background: yellow;
-
-  &-item {
-    background: white;
-    }
-  }
-
-.status-bar-item {
-  font-family: monospace;
-  text-align: center;
-  border: 1px solid red;
-  }
-
-/**
- * Current date + time display
- */
-.datetime-display {}
-
-// Listening status
-.listening-status {
-  text-align: right;
-  
-  > * {
-    display: inline-block;
-    }
-  }
-
-.status-led {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5) inset;
-  }
-
-.status-listening {
-  background: red;
-  animation: listening 2s ease-in-out infinite;
-  transform: scale(0.9);
-  }
-
-@keyframes listening {
-  0% {}
-  25% {
-    transform: scale(1);
-    }
-  100% {}
-}
-
-.status-away {
-  background: orange;
-  animation: away 2s ease-in-out infinite;
-  transform: scale(0.9);
-  }
-
-@keyframes away {
-  0% {}
-  25% {
-    transform: scale(1);
-    }
-  100% {}
-  }
-
-.status-processing {
-  background: blue;
-  box-shadow: 0 0 20px 20px red;
-  }
-
-//////////////////////////////////////////////
+@import "components/datetime";
+@import "components/last-commands";
+@import "components/listening-status";
 
 .tempbox {
   position: absolute;
@@ -132,82 +23,5 @@ body {
   background: green;
   }
 
-.main-action-screen-1 {
-  position: absolute;
-  top: $status-bar-height;
-  left: $tempbox-width;
-  width: $main-screen-width;
-  height: $main-screen-1-height;
-  
-  background: blue;
-  }
-
-.main-action-screen-2 {
-  position: absolute;
-  top: ($status-bar-height + $main-screen-1-height);
-  left: $tempbox-width;
-  width: $main-screen-width;
-  height: $main-screen-2-height;
-  
-  background-color: hotpink;
-  }
-
-
-
-.side-screen-container {
-  position: absolute;
-  top: $status-bar-height;
-  left: ($tempbox-width + $main-screen-width);
-  width: $side-screen-container-width;
-  height: $side-screen-container-height;
-  
-  background-color: darkorchid;
-  
-  .side-screen {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: $side-screen-height;
-    }
-  
-  .side-screen-1 {
-    background-color: darkgoldenrod
-    }
-  .side-screen-2 {
-    background-color: darkolivegreen
-    }
-  .side-screen-3 {
-    background-color: darkorange;
-    }
-  } // .side-screen-container
-
-
-/**
- * Last commands section
- */
-.last-command-container {
-
-  .last-command {
-    &-list {
-      padding: 1%;
-      font-size: 100%;
-    }
-    
-    &-item:nth-child(odd) {
-      color: green;
-      background: white;
-      font-size: 100%;
-    }
-
-    &-title {
-      color: grey;
-      }
-    } // .last-command
-
-  li {
-    list-style: none;
-    }
-  } // .last-command-container
 
 

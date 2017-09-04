@@ -39,12 +39,22 @@
   }, 3000);
 })();
 
+
+
+
+// DOM element hooks
+
+// Main screens
 var screen1 = document.querySelector(".main-action-screen-1");
 var screen2 = document.querySelector(".main-action-screen-2");
+// Side screens
 var screen3 = document.querySelector(".side-screen-1");
 var screen4 = document.querySelector(".side-screen-2");
-
+// Status indicator
 var statusLed = document.querySelector(".status-led");
+var statusText = document.querySelector(".status-text");
+
+
 
 /**
  * Last commands section
@@ -133,6 +143,11 @@ if (annyang) {
       voiceFeedback("I'm stopping.");
     },
 
+    'refresh': function() {
+      voiceFeedback("reloading", 1, 1.5);
+      document.location.reload(true); // Page reload. TRUE = reload current page from the server
+    },
+
     'test': function() {
       statusLed.classList.add("status-processing");
       voiceFeedback("Test, check 1 2 3", 1, 2);
@@ -149,6 +164,7 @@ if (annyang) {
     '(take a) break': function() {
       voiceFeedback("Okay. Call me if you need me.");
       annyang.pause();
+      statusText.innerHTML = "Away";
       statusLed.classList.remove("status-listening");
       statusLed.classList.add("status-away");
       appendLastCommand("Pause listening")

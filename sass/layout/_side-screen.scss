@@ -1,0 +1,27 @@
+.side-screen-container {
+  position: absolute;
+  top: $status-bar-height;
+  left: ($tempbox-width + $main-screen-width);
+  width: $side-screen-container-width;
+  height: $side-screen-container-height;
+  
+  background-color: darkorchid;
+  
+  .side-screen {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $side-screen-height;
+    }
+  
+  .side-screen-1 {
+    background-color: darkgoldenrod
+    }
+  .side-screen-2 {
+    background-color: darkolivegreen
+    }
+  .side-screen-3 {
+    background-color: darkorange;
+    }
+  } // .side-screen-container

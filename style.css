@@ -1,7 +1,10 @@
 /**
+ * Structure
+ */
+/**
  * General layout rules + Overall structure
  */
-/* line 23, C:/Git/ai/sass/style.scss */
+/* line 4, C:/Git/ai/sass/base/_base.scss */
 *,
 *:before,
 *:after {
@@ -10,13 +13,13 @@
   margin: 0;
 }
 
-/* line 31, C:/Git/ai/sass/style.scss */
+/* line 12, C:/Git/ai/sass/base/_base.scss */
 body {
   width: 100vw;
   font-size: 20px;
 }
 
-/* line 37, C:/Git/ai/sass/style.scss */
+/* line 18, C:/Git/ai/sass/base/_base.scss */
 .container {
   width: 100vw;
   height: 100vh;
@@ -25,7 +28,7 @@ body {
 /**
  * Status bar and its elements
  */
-/* line 45, C:/Git/ai/sass/style.scss */
+/* line 4, C:/Git/ai/sass/layout/_status-bar.scss */
 .status-bar {
   position: absolute;
   top: 0;
@@ -38,44 +41,120 @@ body {
   background: yellow;
 }
 
-/* line 58, C:/Git/ai/sass/style.scss */
+/* line 17, C:/Git/ai/sass/layout/_status-bar.scss */
 .status-bar-item {
   background: white;
-}
-
-/* line 63, C:/Git/ai/sass/style.scss */
-.status-bar-item {
   font-family: monospace;
   text-align: center;
   border: 1px solid red;
 }
 
+/* line 1, C:/Git/ai/sass/layout/_side-screen.scss */
+.side-screen-container {
+  position: absolute;
+  top: 5vh;
+  left: 65vw;
+  width: 35vw;
+  height: 95vh;
+  background-color: darkorchid;
+}
+
+/* line 10, C:/Git/ai/sass/layout/_side-screen.scss */
+.side-screen-container .side-screen {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 31.66667vh;
+}
+
+/* line 18, C:/Git/ai/sass/layout/_side-screen.scss */
+.side-screen-container .side-screen-1 {
+  background-color: darkgoldenrod;
+}
+
+/* line 21, C:/Git/ai/sass/layout/_side-screen.scss */
+.side-screen-container .side-screen-2 {
+  background-color: darkolivegreen;
+}
+
+/* line 24, C:/Git/ai/sass/layout/_side-screen.scss */
+.side-screen-container .side-screen-3 {
+  background-color: darkorange;
+}
+
+/* line 1, C:/Git/ai/sass/layout/_main-screen-1.scss */
+.main-action-screen-1 {
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  width: 60vw;
+  height: 60vh;
+  background: blue;
+}
+
+/* line 1, C:/Git/ai/sass/layout/_main-screen-2.scss */
+.main-action-screen-2 {
+  position: absolute;
+  top: 65vh;
+  left: 5vw;
+  width: 60vw;
+  height: 35vh;
+  background-color: hotpink;
+}
+
 /**
  * Current date + time display
  */
-/* line 75, C:/Git/ai/sass/style.scss */
+/**
+ * Last commands section
+ */
+/* line 7, C:/Git/ai/sass/components/_last-commands.scss */
+.last-command-container .last-command-list {
+  padding: 1%;
+  font-size: 100%;
+}
+
+/* line 12, C:/Git/ai/sass/components/_last-commands.scss */
+.last-command-container .last-command-item:nth-child(odd) {
+  color: green;
+  background: white;
+  font-size: 100%;
+}
+
+/* line 18, C:/Git/ai/sass/components/_last-commands.scss */
+.last-command-container .last-command-title {
+  color: grey;
+}
+
+/* line 23, C:/Git/ai/sass/components/_last-commands.scss */
+.last-command-container li {
+  list-style: none;
+}
+
+/* line 2, C:/Git/ai/sass/components/_listening-status.scss */
 .listening-status {
   text-align: right;
 }
 
-/* line 78, C:/Git/ai/sass/style.scss */
+/* line 5, C:/Git/ai/sass/components/_listening-status.scss */
 .listening-status > * {
   display: inline-block;
 }
 
-/* line 83, C:/Git/ai/sass/style.scss */
+/* line 10, C:/Git/ai/sass/components/_listening-status.scss */
 .status-led {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5) inset;
 }
 
-/* line 90, C:/Git/ai/sass/style.scss */
+/* line 18, C:/Git/ai/sass/components/_listening-status.scss */
 .status-listening {
   background: red;
   animation: listening 2s ease-in-out infinite;
-  transform: scale(0.9);
+  transform: scale(0.7);
 }
 
 @keyframes listening {
@@ -88,7 +167,7 @@ body {
   }
 }
 
-/* line 104, C:/Git/ai/sass/style.scss */
+/* line 32, C:/Git/ai/sass/components/_listening-status.scss */
 .status-away {
   background: orange;
   animation: away 2s ease-in-out infinite;
@@ -105,13 +184,13 @@ body {
   }
 }
 
-/* line 118, C:/Git/ai/sass/style.scss */
+/* line 46, C:/Git/ai/sass/components/_listening-status.scss */
 .status-processing {
   background: blue;
   box-shadow: 0 0 20px 20px red;
 }
 
-/* line 125, C:/Git/ai/sass/style.scss */
+/* line 16, C:/Git/ai/sass/style.scss */
 .tempbox {
   position: absolute;
   top: 5vh;
@@ -119,86 +198,6 @@ body {
   width: 5vw;
   height: 95vh;
   background: green;
-}
-
-/* line 135, C:/Git/ai/sass/style.scss */
-.main-action-screen-1 {
-  position: absolute;
-  top: 5vh;
-  left: 5vw;
-  width: 60vw;
-  height: 60vh;
-  background: blue;
-}
-
-/* line 145, C:/Git/ai/sass/style.scss */
-.main-action-screen-2 {
-  position: absolute;
-  top: 65vh;
-  left: 5vw;
-  width: 60vw;
-  height: 35vh;
-  background-color: hotpink;
-}
-
-/* line 157, C:/Git/ai/sass/style.scss */
-.side-screen-container {
-  position: absolute;
-  top: 5vh;
-  left: 65vw;
-  width: 35vw;
-  height: 95vh;
-  background-color: darkorchid;
-}
-
-/* line 166, C:/Git/ai/sass/style.scss */
-.side-screen-container .side-screen {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 31.66667vh;
-}
-
-/* line 174, C:/Git/ai/sass/style.scss */
-.side-screen-container .side-screen-1 {
-  background-color: darkgoldenrod;
-}
-
-/* line 177, C:/Git/ai/sass/style.scss */
-.side-screen-container .side-screen-2 {
-  background-color: darkolivegreen;
-}
-
-/* line 180, C:/Git/ai/sass/style.scss */
-.side-screen-container .side-screen-3 {
-  background-color: darkorange;
-}
-
-/**
- * Last commands section
- */
-/* line 192, C:/Git/ai/sass/style.scss */
-.last-command-container .last-command-list {
-  padding: 1%;
-  font-size: 100%;
-}
-
-/* line 197, C:/Git/ai/sass/style.scss */
-.last-command-container .last-command-item:nth-child(odd) {
-  color: green;
-  background: white;
-  font-size: 100%;
-}
-
-/* line 203, C:/Git/ai/sass/style.scss */
-.last-command-container .last-command-title {
-  color: grey;
-}
-
-/* line 208, C:/Git/ai/sass/style.scss */
-.last-command-container li {
-  list-style: none;
 }
 
 /*# sourceMappingURL=../style.map */

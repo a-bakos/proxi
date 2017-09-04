@@ -1,0 +1,26 @@
+/**
+ * Last commands section
+ */
+.last-command-container {
+
+  .last-command {
+    &-list {
+      padding: 1%;
+      font-size: 100%;
+    }
+    
+    &-item:nth-child(odd) {
+      color: green;
+      background: white;
+      font-size: 100%;
+    }
+
+    &-title {
+      color: grey;
+      }
+    } // .last-command
+
+  li {
+    list-style: none;
+    }
+  } // .last-command-container

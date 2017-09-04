@@ -1,0 +1,49 @@
+// Listening status
+.listening-status {
+  text-align: right;
+  
+  > * {
+    display: inline-block;
+    }
+  }
+
+.status-led {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5) inset;
+  }
+
+// Different states based on behaviour
+.status-listening {
+  background: red;
+  animation: listening 2s ease-in-out infinite;
+  transform: scale(0.7);
+  }
+
+@keyframes listening {
+  0% {}
+  25% {
+    transform: scale(1);
+    }
+  100% {}
+}
+
+.status-away {
+  background: orange;
+  animation: away 2s ease-in-out infinite;
+  transform: scale(0.9);
+  }
+
+@keyframes away {
+  0% {}
+  25% {
+    transform: scale(1);
+    }
+  100% {}
+  }
+
+.status-processing {
+  background: blue;
+  box-shadow: 0 0 20px 20px red;
+  }
