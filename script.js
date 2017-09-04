@@ -181,10 +181,6 @@ function appendLastCommand(commandMessage) {
   lastCommand.insertBefore(lastCommandMessage, lastCommand.firstChild);
 }
 
-
-
-
-
 /**
  * Function for providing voice feedback
  */
@@ -216,12 +212,12 @@ var googleImageSearchFor;
 
 
 
-  // Abstract function for reloading the page
-  function reloadPage() {
-    voiceFeedback("reloading", 1, 1.5);
-    document.location.reload(true); // Page reload. TRUE = reload current page from the server
-    appendLastCommand("Flushing memory");
-  }
+// Abstract function for reloading the page
+function reloadPage() {
+  voiceFeedback("reloading", 1, 1.5);
+  document.location.reload(true); // Page reload. TRUE = reload current page from the server
+  appendLastCommand("Flushing memory");
+}
 
 
 /**
@@ -342,9 +338,12 @@ if (annyang) {
     },
 
     'shut down now': function() {
-      voiceFeedback("Right. Bye bye for now.");
+      voiceFeedback("Right. Goodbye for now.");
       annyang.abort();
-      appendLastCommand("Shutting down")
+      appendLastCommand("Shutting down");
+      statusLed.classList.remove("status-listening");
+      statusText.innerHTML = "Offline";
+      statusLed.classList.add("status-shut-down");
     },
 
     '(take a) break': function() {

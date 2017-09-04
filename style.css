@@ -190,6 +190,11 @@ body {
   box-shadow: 0 0 20px 20px red;
 }
 
+/* line 51, C:/Git/ai/sass/components/_listening-status.scss */
+.status-shut-down {
+  background: transparent;
+}
+
 /* line 1, C:/Git/ai/sass/components/_location-display.scss */
 .location-display {
   font-size: 10px;
