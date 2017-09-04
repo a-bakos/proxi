@@ -1,43 +1,128 @@
 /**
- * General
+ * General layout rules + Overall structure
  */
 /* line 6, C:/Git/ai/sass/style.scss */
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-/* line 12, C:/Git/ai/sass/style.scss */
+/* line 14, C:/Git/ai/sass/style.scss */
 body {
+  width: 100vw;
   font-size: 20px;
+  background-color: bisque;
+}
+
+/* line 21, C:/Git/ai/sass/style.scss */
+.container {
+  width: 100vw;
+}
+
+/* line 25, C:/Git/ai/sass/style.scss */
+.tempbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10vw;
+  height: 100vh;
+  background: green;
 }
 
 /**
  * Status bar and its elements
  */
-/* line 19, C:/Git/ai/sass/style.scss */
+/* line 39, C:/Git/ai/sass/style.scss */
 .status-bar {
-  background: rgba(255, 0, 0, 0.15);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 10vh;
+  z-index: 10;
+  background: yellow;
+}
+
+/* line 50, C:/Git/ai/sass/style.scss */
+.main-action-screen-1 {
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  width: 60vw;
+  height: 60vh;
+  background: blue;
+}
+
+/* line 60, C:/Git/ai/sass/style.scss */
+.main-action-screen-2 {
+  position: absolute;
+  top: 70vh;
+  left: 10vw;
+  width: 60vw;
+  height: 30vh;
+  background-color: hotpink;
+}
+
+/* line 70, C:/Git/ai/sass/style.scss */
+.side-screen-container {
+  position: absolute;
+  top: 10vh;
+  left: 70vw;
+  width: 30vw;
+  height: 90vh;
+  background-color: darkorchid;
+}
+
+/* line 79, C:/Git/ai/sass/style.scss */
+.side-screen-container .side-screen-1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 30vw;
+  height: 30vh;
+  background-color: darkgoldenrod;
+}
+
+/* line 88, C:/Git/ai/sass/style.scss */
+.side-screen-container .side-screen-2 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 30vw;
+  height: 30vh;
+  background-color: darkolivegreen;
+}
+
+/* line 97, C:/Git/ai/sass/style.scss */
+.side-screen-container .side-screen-3 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 30vw;
+  height: 30vh;
+  background-color: darkorange;
 }
 
 /**
  * Last commands section
  */
-/* line 29, C:/Git/ai/sass/style.scss */
+/* line 115, C:/Git/ai/sass/style.scss */
 .last-command-container .last-command-list {
   padding: 1%;
   font-size: 50%;
 }
 
-/* line 34, C:/Git/ai/sass/style.scss */
+/* line 120, C:/Git/ai/sass/style.scss */
 .last-command-container .last-command-item:first-child {
   color: green;
   background: white;
   font-size: 200%;
 }
 
-/* line 40, C:/Git/ai/sass/style.scss */
+/* line 126, C:/Git/ai/sass/style.scss */
 .last-command-container .last-command-title {
   color: grey;
 }

@@ -1,24 +1,110 @@
 @charset "UTF-8";
 
 /**
- * General
+ * General layout rules + Overall structure
  */
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
   }
 
 body {
-  font-size: 20px;
+  width: 100vw;
+  font-size: 20px; // base font size
+  background-color: bisque;
+  }
+
+// Everything is contained within this element
+.container {
+  width: 100vw;
+  }
+
+.tempbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10vw;
+  height: 100vh;
+
+  background: green;
+//  z-index: 9;
   }
 
 /**
  * Status bar and its elements
  */
 .status-bar {
-  background: rgba(255,0,0,0.15);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 10vh;
+  z-index: 10;
+  
+  background: yellow;
   }
+
+.main-action-screen-1 {
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  width: 60vw;
+  height: 60vh;
+  
+  background: blue;
+  }
+
+.main-action-screen-2 {
+  position: absolute;
+  top: 70vh;
+  left: 10vw;
+  width: 60vw;
+  height: 30vh;
+  
+  background-color: hotpink;
+  }
+
+.side-screen-container {
+  position: absolute;
+  top: 10vh;
+  left: 70vw;
+  width: 30vw;
+  height: 90vh;
+  
+  background-color: darkorchid;
+  
+  .side-screen-1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 30vw;
+    height: 30vh;
+  
+    background-color: darkgoldenrod
+    }
+  .side-screen-2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 30vw;
+    height: 30vh;
+    
+    background-color: darkolivegreen
+    }
+  .side-screen-3 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 30vw;
+    height: 30vh;
+    
+    background-color: darkorange;
+    }
+  } // .side-screen-container
+
 
 /**
  * Last commands section

@@ -94,14 +94,12 @@ if (annyang) {
       voiceFeedback("Opening search.");
       url = googleURL;
       myWindow = window.open(url, "myWindow");
-      //lastCommandMessage.innerHTML = "Search opened.";
       appendLastCommand("Search opened")
     },
 
     'close search': function() {
       voiceFeedback("Closing search.");
       myWindow.close();
-      //lastCommandMessage.innerHTML = "Search window closed.";
       appendLastCommand("Search window closed.")
     },
 
@@ -119,16 +117,12 @@ if (annyang) {
       appendLastCommand("Performed image search for " + expression);
     },
     
-    /*
-    ':gratitude': function(gratitude) {
-      if (gratitude === "thanks") {
-        voiceFeedback("No problem.");
-      }
-      else if (gratitude === "thank you") {
-        voiceFeedback("You're welcome!");
-      }
+    
+    ':gratitude': {
+      'regexp': /^(thanks|thank you|t h x|cheers|cheerio)$/,
+      'callback': voiceFeedback("You're welcome.")
     },
-*/
+
 
     'stop': function() {
       voiceFeedback("I'm stopping.");
@@ -145,7 +139,7 @@ if (annyang) {
       appendLastCommand("Shutting down")
     },
 
-    'take a break': function() {
+    '(take a) break': function() {
       voiceFeedback("Okay. Call me if you need me.");
       annyang.pause();
       appendLastCommand("Pause listening")
