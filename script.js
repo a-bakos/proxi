@@ -7,8 +7,9 @@
 var screen1 = document.querySelector(".main-action-screen-1");
 var screen2 = document.querySelector(".main-action-screen-2");
 // Side screens
-var screen3 = document.querySelector(".side-screen-1");
-var screen4 = document.querySelector(".side-screen-2");
+var sideScreen1 = document.querySelector(".side-screen-1");
+var sideScreen2 = document.querySelector(".side-screen-2");
+var sideScreen3 = document.querySelector(".side-screen-3");
 // Status indicator
 var statusLed = document.querySelector(".status-led");
 var statusText = document.querySelector(".status-text");
@@ -212,18 +213,70 @@ var googleImageSearchFor;
 
 
 
-/**
- * Annyang commands
- */
-if (annyang) {
 
-  // Reload page functions
+
+
+  // Abstract function for reloading the page
   function reloadPage() {
     voiceFeedback("reloading", 1, 1.5);
     document.location.reload(true); // Page reload. TRUE = reload current page from the server
     appendLastCommand("Flushing memory");
   }
 
+
+/**
+ * Audio player
+ */
+
+// Create the whole audio player element
+function buildAudioPlayer(targetLocation = sideScreen1) {
+  // Build the wrapper
+  var audioPlayerContainer = document.createElement("div");
+  audioPlayerContainer.classList.add("audio-player-container");
+  targetLocation.appendChild(audioPlayerContainer);
+
+  // Build the audio player
+  var audioPlayer = document.createElement("audio");
+  audioPlayer.setAttribute("controls", "");
+  audioPlayer.classList.add("music");
+  audioPlayerContainer.appendChild(audioPlayer);
+
+  // Load the music into the player
+  var audioPlayerSource = document.createElement("source");
+  audioPlayerSource.setAttribute("src", "files/music/globular–synchronicity-city-3.0.mp3");
+  audioPlayer.appendChild(audioPlayerSource);
+
+  playAudio(); // autoplay for testing
+}
+
+// Remove the audio player from the DOM
+function removeAudioPlayer(targetLocation = sideScreen1) {
+  var audioPlayerContainer = document.querySelector(".audio-player-container");
+  targetLocation.removeChild(audioPlayerContainer);
+}
+
+buildAudioPlayer();
+
+
+function playAudio() {
+  var music = document.querySelector(".music");
+
+  if (music.paused) {
+    music.play();
+  }
+  else {
+    music.pause();
+  }
+}
+
+
+
+
+
+/**
+ * Annyang commands
+ */
+if (annyang) {
   var url;
 
   var myWindow; // For new windows
@@ -257,6 +310,10 @@ if (annyang) {
       appendLastCommand("Performed image search for " + expression);
     },
     
+    'name': function() {
+      voiceFeedback("my name is Archie Sense.");
+    },
+    
     /* this is broken
     ':gratitude': {
       'regexp': /^(thanks|thank you|t h x|cheers|cheerio|one)$/,
@@ -270,6 +327,7 @@ if (annyang) {
 
     // Reload page commands
     'reload': function() { reloadPage(); },
+    'refresh': function() { reloadPage(); },
     'flush memory': function() { reloadPage(); },
     'empty memory': function() { reloadPage(); },
     'buffer flush': function() { reloadPage(); },
@@ -302,6 +360,14 @@ if (annyang) {
       annyang.resume();
     },
 
+    // Audio player commands
+    '(open) audio player': function() {
+      voiceFeedback("ok");
+      buildAudioPlayer();
+    },
+    
+    
+    
     'phonetic a': function() { voiceFeedback("alpha", 1, 1); },
     'phonetic b': function() { voiceFeedback("bravo", 1, 1); },
     'phonetic c': function() { voiceFeedback("charlie", 1, 1); }

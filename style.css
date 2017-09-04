@@ -216,4 +216,14 @@ body {
   background: green;
 }
 
+/* line 31, C:/Git/ai/sass/style.scss */
+.audio-player-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5vh;
+  background: pink;
+}
+
 /*# sourceMappingURL=../style.map */
