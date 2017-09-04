@@ -24,6 +24,9 @@ var userLocationHeading = document.querySelector(".location-heading");
 var userLocationSpeed = document.querySelector(".location-speed");
 var userLocationTimestamp = document.querySelector(".location-timestamp");
 
+// var userLocationMap = document.querySelector(".location-map");
+
+
 /**
  * Detecting location using Geolocation API
  */
@@ -56,6 +59,18 @@ if (navigator.geolocation) {
       userLocationSpeed.innerHTML = position.coords.speed;
 
       userLocationTimestamp.innerHTML = position.timestamp;
+
+      var userLocationMap = new GMaps({
+        el: '.location-map',
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      });
+
+      userLocationMap.addMarker({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        });
+      
     },
     // Optional error callback
     function(error){

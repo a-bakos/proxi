@@ -56,7 +56,18 @@
         <div class="side-screen side-screen-1">side screen 1</div>
 
         <div class="side-screen side-screen-2">
+
+          <div class="last-command-container">
+            <p class="last-command-title">Last commands:</p>
+            <ul class="last-command-list"></ul>
+          </div>
+
+        </div>
+
+        <div class="side-screen side-screen-3">
+
           <div class="location-display">
+            <div class="location-map"></div>
             <p>Latitude:<span class="location-latitude"></span></p>
             <p>Longitude:<span class="location-longitude"></span></p>
             <p>Altitude:<span class="location-altitude"></span></p>
@@ -68,16 +79,11 @@
           </div>
 
         </div>
-
-        <div class="side-screen side-screen-3">
-          <div class="last-command-container">
-            <p class="last-command-title">Last commands:</p>
-            <ul class="last-command-list"></ul>
-          </div>
-        </div>
       </div>
 
     </div> <!-- .container -->
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="vendors/gmaps.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
