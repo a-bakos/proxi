@@ -152,7 +152,7 @@ body {
 
 /* line 18, C:/Git/ai/sass/components/_listening-status.scss */
 .status-listening {
-  background: red;
+  background: green;
   animation: listening 2s ease-in-out infinite;
   transform: scale(0.7);
 }
@@ -190,7 +190,23 @@ body {
   box-shadow: 0 0 20px 20px red;
 }
 
-/* line 16, C:/Git/ai/sass/style.scss */
+/* line 1, C:/Git/ai/sass/components/_location-display.scss */
+.location-display {
+  font-size: 10px;
+}
+
+/* line 5, C:/Git/ai/sass/components/_location-display.scss */
+.location-map {
+  width: 100%;
+  height: 250px;
+}
+
+/* line 10, C:/Git/ai/sass/components/_location-display.scss */
+.side-screen {
+  overflow-Y: auto;
+}
+
+/* line 20, C:/Git/ai/sass/style.scss */
 .tempbox {
   position: absolute;
   top: 5vh;
@@ -198,17 +214,6 @@ body {
   width: 5vw;
   height: 95vh;
   background: green;
-}
-
-/* line 27, C:/Git/ai/sass/style.scss */
-.location-display {
-  font-size: 10px;
-}
-
-/* line 31, C:/Git/ai/sass/style.scss */
-.location-map {
-  width: 100%;
-  height: 200px;
 }
 
 /*# sourceMappingURL=../style.map */

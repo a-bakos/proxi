@@ -12,6 +12,10 @@
 @import "components/datetime";
 @import "components/last-commands";
 @import "components/listening-status";
+@import "components/location-display";
+
+
+
 
 .tempbox {
   position: absolute;
@@ -22,13 +26,3 @@
 
   background: green;
   }
-
-
-.location-display {
-    font-size: 10px;
-  }
-
-.location-map {
-	width: 100%;
-  height: 200px;
-}

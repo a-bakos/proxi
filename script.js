@@ -13,7 +13,13 @@ var screen4 = document.querySelector(".side-screen-2");
 var statusLed = document.querySelector(".status-led");
 var statusText = document.querySelector(".status-text");
 
-// Location detection
+
+
+
+
+/**
+ * Detecting location using Geolocation API
+ */
 var userLocation = document.querySelector(".location");
 var userLocationLatitude = document.querySelector(".location-latitude");
 var userLocationLongitude = document.querySelector(".location-longitude");
@@ -24,12 +30,9 @@ var userLocationHeading = document.querySelector(".location-heading");
 var userLocationSpeed = document.querySelector(".location-speed");
 var userLocationTimestamp = document.querySelector(".location-timestamp");
 
-// var userLocationMap = document.querySelector(".location-map");
+var locationHomeLatitude = 51.455948;
+var locationHomeLongitude = -0.9714347000000001;
 
-
-/**
- * Detecting location using Geolocation API
- */
 if (navigator.geolocation) {
   // geolocation is available
   navigator.geolocation.getCurrentPosition(
@@ -57,20 +60,22 @@ if (navigator.geolocation) {
       userLocationAltitudeAccuracy.innerHTML = position.coords.altitudeAccuracy;
       userLocationHeading.innerHTML = position.coords.heading;
       userLocationSpeed.innerHTML = position.coords.speed;
-
       userLocationTimestamp.innerHTML = position.timestamp;
 
+      var targetElement = ".location-map";
+
       var userLocationMap = new GMaps({
-        el: '.location-map',
+        el: targetElement,
         lat: position.coords.latitude,
-        lng: position.coords.longitude
+        lng: position.coords.longitude,
+        mapType: "satellite",
+        zoom: 19
       });
 
       userLocationMap.addMarker({
         lat: position.coords.latitude,
-        lng: position.coords.longitude,
-        });
-      
+        lng: position.coords.longitude
+      });
     },
     // Optional error callback
     function(error){
@@ -91,6 +96,7 @@ if (navigator.geolocation) {
 else {
   // geolocation is not supported
 }
+
 
 
 
@@ -131,8 +137,10 @@ else {
     timeDisplay.innerHTML = currentTime;
 
     displayDateTime(); // Recursion.
+    return currentTime;
   }, 3000);
 })();
+
 
 
 
@@ -146,12 +154,35 @@ var lastCommand = document.querySelector(".last-command-list");
 
 // Building and appending elements as command items to the last commands list:
 function appendLastCommand(commandMessage) {
+  // Get time
+  var commandDate = new Date();
+  var commandSeconds = commandDate.getSeconds()
+  var commandMinutes = commandDate.getMinutes()
+  var commandHours   = commandDate.getHours();
+
+  if (commandHours <= 9) {
+    commandHourss= "0" + commandHours;
+  }
+  if (commandMinutes <= 9) {
+    commandMinutes = "0" + commandMinutes;
+  }
+  if (commandSeconds <= 9) {
+    commandSeconds = "0" + commandSeconds;
+  }
+
+  var commandTime = commandHours + ":" + commandMinutes + ":" + commandSeconds;
+
   lastCommandCounter++;
+
   var lastCommandMessage = document.createElement("li");
   lastCommandMessage.classList.add("last-command-item", "command-" + lastCommandCounter);
-  lastCommandMessage.innerHTML = commandMessage;
+  lastCommandMessage.innerHTML = commandTime + " " + commandMessage;
   lastCommand.insertBefore(lastCommandMessage, lastCommand.firstChild);
 }
+
+
+
+
 
 /**
  * Function for providing voice feedback
@@ -166,6 +197,8 @@ function voiceFeedback(feedbackString, pitch = 1, rate = 1.25) {
 }
 
 
+
+
 /**
  * Google search links
  */
@@ -177,10 +210,20 @@ var imageSearchStart = "https://www.google.co.uk/search?q=";
 var imageSearchEnd = "&source=lnms&tbm=isch";
 var googleImageSearchFor;
 
+
+
 /**
  * Annyang commands
  */
 if (annyang) {
+
+  // Reload page functions
+  function reloadPage() {
+    voiceFeedback("reloading", 1, 1.5);
+    document.location.reload(true); // Page reload. TRUE = reload current page from the server
+    appendLastCommand("Flushing memory");
+  }
+
   var url;
 
   var myWindow; // For new windows
@@ -214,10 +257,10 @@ if (annyang) {
       appendLastCommand("Performed image search for " + expression);
     },
     
-    /*
+    /* this is broken
     ':gratitude': {
-      'regexp': /(thanks|thank you|t h x|cheers|cheerio|one)/,
-      //'callback': voiceFeedback("You're welcome.")
+      'regexp': /^(thanks|thank you|t h x|cheers|cheerio|one)$/,
+      'callback': voiceFeedback("You're welcome.")
     },
 */
 
@@ -225,11 +268,11 @@ if (annyang) {
       voiceFeedback("I'm stopping.");
     },
 
-    'refresh': function() {
-      voiceFeedback("reloading", 1, 1.5);
-      document.location.reload(true); // Page reload. TRUE = reload current page from the server
-      appendLastCommand("Refresh.");
-    },
+    // Reload page commands
+    'reload': function() { reloadPage(); },
+    'flush memory': function() { reloadPage(); },
+    'empty memory': function() { reloadPage(); },
+    'buffer flush': function() { reloadPage(); },
 
     'test': function() {
       statusLed.classList.add("status-processing");

@@ -13,7 +13,7 @@
 - save img / files
 - overall volume voice control
 - status bar:
-	- location
+	- [done] location
 	- listening status
 	- $_SERVER details
 	- [done] date / time
