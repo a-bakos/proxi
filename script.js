@@ -39,6 +39,10 @@
   }, 3000);
 })();
 
+var screen1 = document.querySelector(".main-action-screen-1");
+var screen2 = document.querySelector(".main-action-screen-2");
+var screen3 = document.querySelector(".side-screen-1");
+var screen4 = document.querySelector(".side-screen-2");
 
 /**
  * Last commands section
@@ -49,12 +53,11 @@ var lastCommand = document.querySelector(".last-command-list");
 // Building and appending elements as command items to the last commands list:
 function appendLastCommand(commandMessage) {
   lastCommandCounter++;
-  var lastCommandMessage = document.createElement("p");
+  var lastCommandMessage = document.createElement("li");
   lastCommandMessage.classList.add("last-command-item", "command-" + lastCommandCounter);
   lastCommandMessage.innerHTML = commandMessage;
   lastCommand.insertBefore(lastCommandMessage, lastCommand.firstChild);
 }
-
 
 /**
  * Function for providing voice feedback
@@ -119,7 +122,7 @@ if (annyang) {
     
     
     ':gratitude': {
-      'regexp': /^(thanks|thank you|t h x|cheers|cheerio)$/,
+      'regexp': /(thanks|thank you|t h x|cheers|cheerio|one)/,
       'callback': voiceFeedback("You're welcome.")
     },
 
