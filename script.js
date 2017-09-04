@@ -246,7 +246,7 @@ function buildAudioPlayer(targetLocation = sideScreen1) {
   audioPlayerSource.setAttribute("src", "files/music/globular–synchronicity-city-3.0.mp3");
   audioPlayer.appendChild(audioPlayerSource);
 
-  playAudio(); // autoplay for testing
+
 }
 
 // Remove the audio player from the DOM
@@ -255,7 +255,7 @@ function removeAudioPlayer(targetLocation = sideScreen1) {
   targetLocation.removeChild(audioPlayerContainer);
 }
 
-buildAudioPlayer();
+//buildAudioPlayer();
 
 
 function playAudio() {
@@ -277,6 +277,7 @@ function playAudio() {
  * Annyang commands
  */
 if (annyang) {
+  var audioPlayerIsOpen = false;
   var url;
 
   var myWindow; // For new windows
@@ -360,14 +361,31 @@ if (annyang) {
       annyang.resume();
     },
 
+
+
     // Audio player commands
-    '(open) audio player': function() {
+    'open audio player': function() {
+      audioPlayerIsOpen = true;
       voiceFeedback("ok");
       buildAudioPlayer();
     },
-    
-    
-    
+    'play music': function() {
+      if (audioPlayerIsOpen === true) {
+        voiceFeedback("playing music");
+        playAudio(); // autoplay for testing
+      }
+      // else section does not work yet
+      else {
+        voiceFeedback("open player first");
+      }
+    },
+    'close audio player': function() {
+      voiceFeedback("closing audio player");
+      removeAudioPlayer();
+    },
+
+
+
     'phonetic a': function() { voiceFeedback("alpha", 1, 1); },
     'phonetic b': function() { voiceFeedback("bravo", 1, 1); },
     'phonetic c': function() { voiceFeedback("charlie", 1, 1); }
