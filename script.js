@@ -44,6 +44,8 @@ var screen2 = document.querySelector(".main-action-screen-2");
 var screen3 = document.querySelector(".side-screen-1");
 var screen4 = document.querySelector(".side-screen-2");
 
+var statusLed = document.querySelector(".status-led");
+
 /**
  * Last commands section
  */
@@ -120,20 +122,22 @@ if (annyang) {
       appendLastCommand("Performed image search for " + expression);
     },
     
-    
+    /*
     ':gratitude': {
       'regexp': /(thanks|thank you|t h x|cheers|cheerio|one)/,
-      'callback': voiceFeedback("You're welcome.")
+      //'callback': voiceFeedback("You're welcome.")
     },
-
+*/
 
     'stop': function() {
       voiceFeedback("I'm stopping.");
     },
 
     'test': function() {
-      voiceFeedback("Test, check check!", 1, 2);
-      appendLastCommand("Test command")
+      statusLed.classList.add("status-processing");
+      voiceFeedback("Test, check 1 2 3", 1, 2);
+      appendLastCommand("Test command executed");
+      statusLed.classList.remove("status-processing");
     },
 
     'shut down now': function() {
@@ -145,6 +149,8 @@ if (annyang) {
     '(take a) break': function() {
       voiceFeedback("Okay. Call me if you need me.");
       annyang.pause();
+      statusLed.classList.remove("status-listening");
+      statusLed.classList.add("status-away");
       appendLastCommand("Pause listening")
     },
 

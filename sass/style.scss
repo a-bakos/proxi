@@ -50,8 +50,77 @@ body {
   height: $status-bar-height;
   z-index: 10;
   
+  display: grid;
+  grid-template-columns: repeat(5, calc(100% / 3));
+  
   background: yellow;
+
+  &-item {
+    background: white;
+    }
   }
+
+.status-bar-item {
+  font-family: monospace;
+  text-align: center;
+  border: 1px solid red;
+  }
+
+/**
+ * Current date + time display
+ */
+.datetime-display {}
+
+// Listening status
+.listening-status {
+  text-align: right;
+  
+  > * {
+    display: inline-block;
+    }
+  }
+
+.status-led {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5) inset;
+  }
+
+.status-listening {
+  background: red;
+  animation: listening 2s ease-in-out infinite;
+  transform: scale(0.9);
+  }
+
+@keyframes listening {
+  0% {}
+  25% {
+    transform: scale(1);
+    }
+  100% {}
+}
+
+.status-away {
+  background: orange;
+  animation: away 2s ease-in-out infinite;
+  transform: scale(0.9);
+  }
+
+@keyframes away {
+  0% {}
+  25% {
+    transform: scale(1);
+    }
+  100% {}
+  }
+
+.status-processing {
+  background: blue;
+  box-shadow: 0 0 20px 20px red;
+  }
+
+//////////////////////////////////////////////
 
 .tempbox {
   position: absolute;
@@ -142,9 +211,3 @@ body {
   } // .last-command-container
 
 
-/**
- * Current date + time display
- */
-.datetime-display {
-  text-align: center;
-}
