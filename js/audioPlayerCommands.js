@@ -29,7 +29,6 @@ function removeAudioPlayer(targetLocation = sideScreen1) {
   targetLocation.removeChild(audioPlayerContainer);
 }
 
-
 function playAudio() {
   var music = document.querySelector(".music");
 
@@ -46,6 +45,7 @@ function pauseAudio() {
   }
 }
 
+// IIFE runs right after the audioPlayerCommands file has been loaded
 (function initialize() {
   buildAudioPlayer();
   audioPlayerIsOpen = true;

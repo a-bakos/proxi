@@ -200,7 +200,7 @@ var googleImageSearchFor;
 /**
  * 
  * videoo
- * 
+ * WIP
  * 
  */
 (function() {
@@ -233,13 +233,14 @@ var googleImageSearchFor;
 	}
 })();
 
+
+
 /**
  * Page reloading
  */
 function reloadPage() {
   voiceFeedback("reloading", 1, 1.5);
 
-  // Page reload
   // TRUE = reload current page from the server
   // FALSE = reload the page from cache
   document.location.reload(true);
@@ -289,6 +290,7 @@ function loadScript(filename, folder) {
   body.appendChild(scriptElem);
   console.log("Added " + filename + " script to body.");
 }
+
 /**
  * Script removing
  *
@@ -308,18 +310,19 @@ function removeScript(filename) {
 }
 
 
+var url;
+var myWindow; // For new windows
 
 /**
  * Annyang commands
  */
 if (annyang) {
 
-  var url;
+  // Define high-level commands.
+  // First the text, and then the function it should call
 
-  var myWindow; // For new windows
-
-  // Define commands. First the text, and then the function it should call
   var commands = {
+
     'open search': function() {
       voiceFeedback("Opening search.");
       url = googleURL;
@@ -365,10 +368,6 @@ if (annyang) {
     },
 */
 
-    'stop': function() {
-      voiceFeedback("I'm stopping.");
-    },
-
     // Reload page commands
     'reload': function() { reloadPage(); },
     'refresh': function() { reloadPage(); },
@@ -377,10 +376,8 @@ if (annyang) {
     'buffer flush': function() { reloadPage(); },
 
     'test': function() {
-      statusLed.classList.add("status-processing");
       voiceFeedback("Test, check 1 2 3", 1, 2);
       appendLastCommand("Test command executed");
-      statusLed.classList.remove("status-processing");
     },
 
     'shut down now': function() {
@@ -407,13 +404,11 @@ if (annyang) {
       annyang.resume();
     },
 
-
-
-    // Audio player commands
-    'open': function() {
-      loadScript("audioPlayerCommands", "js")
+    // Audio player
+    'open audio player': function() {
       voiceFeedback("ok");
-      appendLastCommand("Open audio player")
+      appendLastCommand("Open audio player");
+      loadScript("audioPlayerCommands", "js");
     },
 
     'phonetic a': function() { voiceFeedback("alpha", 1, 1); },
