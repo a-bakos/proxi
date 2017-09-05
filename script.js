@@ -262,6 +262,27 @@ function reloadPage() {
   appendLastCommand("Flushing memory");
 }
 
+/**
+ * Contex-based SCRIPT loading and removing
+ * to separate out low-level commands
+ * think this through!
+ */
+
+function loadScript(filename) {
+  var scriptElem = document.createElement("script");
+  var body = document.querySelector("body");
+  scriptElem.type = "text/javascript";
+  scriptElem.src = filename + ".js";
+  scriptElem.id = filename;
+  body.appendChild(scriptElem);
+  console.log("added script to body");
+}
+
+function removeScript(filename) {
+  var scriptElem = document.querySelector(filename);
+  body.removeChild(scriptElem);
+  console.log("removed script from body");
+}
 
 /**
  * Audio player
@@ -284,8 +305,6 @@ function buildAudioPlayer(targetLocation = sideScreen1) {
   var audioPlayerSource = document.createElement("source");
   audioPlayerSource.setAttribute("src", "files/music/globular–synchronicity-city-3.0.mp3");
   audioPlayer.appendChild(audioPlayerSource);
-
-
 }
 
 // Remove the audio player from the DOM
@@ -415,9 +434,8 @@ if (annyang) {
 
     // Audio player commands
     'open audio player': function() {
-      audioPlayerIsOpen = true;
+      loadScript("audioCommands")
       voiceFeedback("ok");
-      buildAudioPlayer();
       appendLastCommand("Open audio player")
     },
 
@@ -445,7 +463,6 @@ if (annyang) {
       audioPlayerIsOpen = false;
       appendLastCommand("Close audio player")
     },
-
 
 
     'phonetic a': function() { voiceFeedback("alpha", 1, 1); },
