@@ -1,6 +1,5 @@
 "use strict";
 
-
 // DOM element hooks
 
 // Main screens
@@ -14,11 +13,9 @@ var sideScreen3 = document.querySelector(".side-screen-3");
 var statusLed = document.querySelector(".status-led");
 var statusText = document.querySelector(".status-text");
 
-
-
-
-
 /**
+ * GEOLOCATION
+ *
  * Detecting location using Geolocation API
  */
 var userLocation = document.querySelector(".location");
@@ -31,6 +28,7 @@ var userLocationHeading = document.querySelector(".location-heading");
 var userLocationSpeed = document.querySelector(".location-speed");
 var userLocationTimestamp = document.querySelector(".location-timestamp");
 
+// Home coordinates:
 var locationHomeLatitude = 51.455948;
 var locationHomeLongitude = -0.9714347000000001;
 
@@ -54,6 +52,8 @@ if (navigator.geolocation) {
           timestamp - The time at which the location was retrieved.
       }
       */
+
+      // Showing general information, coordinates, altitude, whatever the object can offer
       userLocationLatitude.innerHTML = position.coords.latitude;
       userLocationLongitude.innerHTML = position.coords.longitude;
       userLocationAltitude.innerHTML = position.coords.altitude;
@@ -63,16 +63,17 @@ if (navigator.geolocation) {
       userLocationSpeed.innerHTML = position.coords.speed;
       userLocationTimestamp.innerHTML = position.timestamp;
 
-      var targetElement = ".location-map";
+      var targetElement = ".location-map"; // This is where to display the map
 
       var userLocationMap = new GMaps({
         el: targetElement,
         lat: position.coords.latitude,
         lng: position.coords.longitude,
-        mapType: "satellite",
-        zoom: 19
+        mapType: "satellite", // other available options: hybrid, terrain, roadmap
+        zoom: 19 // the initial zoom level (increase/decrease with mouse wheel)
       });
 
+      // Add a marker:
       userLocationMap.addMarker({
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -98,13 +99,9 @@ else {
   // geolocation is not supported
 }
 
-
-
-
-
 /**
  * Clock -- date and time display
- * Function re-calls itself every 3 seconds.
+ * IIFE + re-calls itself every 3 seconds.
  */
 (function displayDateTime() {
   var dateDisplay = document.querySelector(".clock-date");
@@ -138,14 +135,8 @@ else {
     timeDisplay.innerHTML = currentTime;
 
     displayDateTime(); // Recursion.
-    return currentTime;
   }, 3000);
 })();
-
-
-
-
-
 
 /**
  * Last commands section
@@ -192,9 +183,6 @@ function voiceFeedback(feedbackString, pitch = 1, rate = 1.25) {
   commandFeedback.rate = rate;
   speechSynthesis.speak(commandFeedback);
 }
-
-
-
 
 /**
  * Google search links
@@ -245,89 +233,78 @@ var googleImageSearchFor;
 	}
 })();
 
-
-
-
-
-
-
-
-
-
-
-// Abstract function for reloading the page
+/**
+ * Page reloading
+ */
 function reloadPage() {
   voiceFeedback("reloading", 1, 1.5);
-  document.location.reload(true); // Page reload. TRUE = reload current page from the server
+
+  // Page reload
+  // TRUE = reload current page from the server
+  // FALSE = reload the page from cache
+  document.location.reload(true);
   appendLastCommand("Flushing memory");
 }
 
 /**
- * Contex-based SCRIPT loading and removing
- * to separate out low-level commands
- * think this through!
+ * Script loading
+ *
+ * Use it as: loadScript(filename[, folder]);
+ * filename: string, required
+ * folder: string, optional
+ *
+ * This function builds up a <script> element and appends it to the end of the
+ * <body> tag.
+ *
+ * "filename" specifies the actual JS file to be included. Use the file's name
+ * (without file extension) as the first and required parameter. This will also
+ * be the #ID of this HTML element.
+ *
+ * "folder" is the path to the JS file you want to include. Leave the last
+ * forward slash out.
+ *
+ * Examples:
+ *
+ * * 1. JS file is in the same folder: loadScript("your-js-file");
+ * Result: <script type="text/javascript" src="your-js-file" id="your-js-file"></script>
+ *
+ * * 2. JS file in is another folder: loadScript("your-js-file", "js/components");
+ * Result: <script type="text/javascript" src="js/components/your-js-file" id="your-js-file"></script>
+ *
+ * See also removeScript() function.
  */
-
-function loadScript(filename) {
+function loadScript(filename, folder) {
   var scriptElem = document.createElement("script");
   var body = document.querySelector("body");
   scriptElem.type = "text/javascript";
-  scriptElem.src = filename + ".js";
+
+  if (typeof folder === 'undefined') {
+    scriptElem.src = filename + ".js";
+  }
+  else {
+    scriptElem.src = folder + "/" + filename + ".js";
+  }
+
   scriptElem.id = filename;
   body.appendChild(scriptElem);
-  console.log("added script to body");
+  console.log("Added " + filename + " script to body.");
 }
-
-function removeScript(filename) {
-  var scriptElem = document.querySelector(filename);
-  body.removeChild(scriptElem);
-  console.log("removed script from body");
-}
-
 /**
- * Audio player
+ * Script removing
+ *
+ * Use it as: removeScript(filename);
+ * filename: string, required
+ *
+ * Based on the filename, which is also an #ID, the functions removes the
+ * <script> tag from the <body>.
+ *
+ * See also scriptLoading() function.
  */
-
-// Create the whole audio player element
-function buildAudioPlayer(targetLocation = sideScreen1) {
-  // Build the wrapper
-  var audioPlayerContainer = document.createElement("div");
-  audioPlayerContainer.classList.add("audio-player-container");
-  targetLocation.appendChild(audioPlayerContainer);
-
-  // Build the audio player
-  var audioPlayer = document.createElement("audio");
-  audioPlayer.setAttribute("controls", "");
-  audioPlayer.classList.add("music");
-  audioPlayerContainer.appendChild(audioPlayer);
-
-  // Load the music into the player
-  var audioPlayerSource = document.createElement("source");
-  audioPlayerSource.setAttribute("src", "files/music/globular–synchronicity-city-3.0.mp3");
-  audioPlayer.appendChild(audioPlayerSource);
-}
-
-// Remove the audio player from the DOM
-function removeAudioPlayer(targetLocation = sideScreen1) {
-  var audioPlayerContainer = document.querySelector(".audio-player-container");
-  targetLocation.removeChild(audioPlayerContainer);
-}
-
-
-function playAudio() {
-  var music = document.querySelector(".music");
-
-  if (music.paused) {
-    music.play();
-  }
-}
-
-function pauseAudio() {
-  var music = document.querySelector(".music");
-
-  if (music.play) {
-    music.pause();
-  }
+function removeScript(filename) {
+  var scriptElem = document.getElementById(filename);
+  var body = document.querySelector("body");
+  body.removeChild(scriptElem);
+  console.log("Removed the " + filename + " script from body.");
 }
 
 
@@ -336,7 +313,7 @@ function pauseAudio() {
  * Annyang commands
  */
 if (annyang) {
-  var audioPlayerIsOpen = false;
+
   var url;
 
   var myWindow; // For new windows
@@ -433,37 +410,11 @@ if (annyang) {
 
 
     // Audio player commands
-    'open audio player': function() {
-      loadScript("audioCommands")
+    'open': function() {
+      loadScript("audioPlayerCommands", "js")
       voiceFeedback("ok");
       appendLastCommand("Open audio player")
     },
-
-    'play music': function() {
-      if (audioPlayerIsOpen === true) {
-        voiceFeedback("playing music");
-        playAudio(); // autoplay for testing
-        appendLastCommand("Play music")
-      }
-      else {
-        voiceFeedback("open the player first");
-        appendLastCommand("Warning: open the player first")
-      }
-    },
-
-    'pause music': function() {
-      voiceFeedback("pausing music");
-      pauseAudio();
-      appendLastCommand("Music paused")
-    },
-
-    'close audio player': function() {
-      voiceFeedback("closing audio player");
-      removeAudioPlayer();
-      audioPlayerIsOpen = false;
-      appendLastCommand("Close audio player")
-    },
-
 
     'phonetic a': function() { voiceFeedback("alpha", 1, 1); },
     'phonetic b': function() { voiceFeedback("bravo", 1, 1); },

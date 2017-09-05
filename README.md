@@ -2,7 +2,7 @@
 
 ### ideas
 
-- add access to camera
+- [done] add access to camera
 - dive into JS regexp
 	- see if JS can read source code with it
 - maybe add php base
@@ -32,3 +32,6 @@
 - [done] side screen 3
 	- maybe use it for saved files
 - one more section on the left side, currently not used
+
+### other 
+- add style.map to .gitignore
