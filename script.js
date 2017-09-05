@@ -408,6 +408,21 @@ if (annyang) {
 
   // Start listening. Call this here, or attach this call to an event, button, etc.
   annyang.start();
+  annyang.debug(true);
+  
+  /**
+   * Record voice input
+   */
+  annyang.addCallback('result', function(phrases) {
+    var voiceInput = document.createElement("p");
+    voiceInput.classList.add("voice-input");
+    voiceInput.innerHTML = phrases[0];
+    screen1.appendChild(voiceInput);
+
+    console.log("I think the user said: ", phrases[0]);
+    console.log("But then again, it could be any of the following: ", phrases);
+  });
+  
 }
 
 

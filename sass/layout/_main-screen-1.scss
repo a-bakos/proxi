@@ -4,6 +4,7 @@
   left: $tempbox-width;
   width: $main-screen-width;
   height: $main-screen-1-height;
-  
+
+  overflow-y: auto;
   background: blue;
   }

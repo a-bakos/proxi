@@ -17,16 +17,18 @@
 	- listening status
 	- $_SERVER details
 	- [done] date / time
-- media player, <audio>, <video>
+- media player, [done]<audio>, <video>
 - notepad:
 	- eg. shopping list
 - full log of events
 
 ### screen sections
 
-- main action screen 1
-- main action screen 2
-- status bar
-- last command list
-- saved files
-- one more section ?
+- [done] main action screen 1
+- [done] main action screen 2
+- [done] status bar
+- [done] side screen 1
+- [done] side screen 2 last command list
+- [done] side screen 3
+	- maybe use it for saved files
+- one more section on the left side, currently not used
