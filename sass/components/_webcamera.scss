@@ -1,0 +1,39 @@
+.webcam-video-container {
+  
+  width: 100%;
+  max-height: 100%;
+
+  background: yellow;
+  overflow: auto;
+  }
+
+.stream-video {
+  max-width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+  background: red;
+  }
+
+.webcam-buttons {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  background: white;
+  position: absolute;
+  bottom: 0;
+  //top: 0;
+  left: 0;
+  z-index: 99;
+  }
+
+.stream-button {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  border: none;
+  outline: none;
+  }
+
+.stream-start {}
+
+.stream-stop {}

@@ -212,6 +212,43 @@ body {
   overflow-Y: auto;
 }
 
+/* line 1, C:/Git/ai/sass/components/_webcamera.scss */
+.webcam-video-container {
+  width: 100%;
+  max-height: 100%;
+  background: yellow;
+  overflow: auto;
+}
+
+/* line 10, C:/Git/ai/sass/components/_webcamera.scss */
+.stream-video {
+  max-width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+  background: red;
+}
+
+/* line 17, C:/Git/ai/sass/components/_webcamera.scss */
+.webcam-buttons {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  background: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+}
+
+/* line 29, C:/Git/ai/sass/components/_webcamera.scss */
+.stream-button {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  border: none;
+  outline: none;
+}
+
 /* line 20, C:/Git/ai/sass/style.scss */
 .tempbox {
   position: absolute;

@@ -209,6 +209,49 @@ var googleImageSearchFor;
 
 
 
+/**
+ * 
+ * videoo
+ * 
+ * 
+ */
+(function() {
+	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+	var stream;
+	var video = document.querySelector('.stream-video');
+	document.querySelector('.stream-start').onclick = function() {
+		if (!navigator.getUserMedia) {
+			alert('Sorry, this isn\'t happening for your browser.');
+			return;
+		}
+		navigator.getUserMedia(
+			{video: true, audio: false}, 
+			function(localMediaStream) {
+				stream = localMediaStream;
+				if (video.mozSrcObject !== undefined) {
+					video.mozSrcObject = stream;
+				} else {
+					video.src = (window.URL || window.webkitURL).createObjectURL(stream);
+				}
+				video.play();
+			},
+			function(e) {
+				alert('getUserMedia failed: Code ' + e.code);
+			}
+		);
+	}
+  document.querySelector('.stream-stop').onclick = function() {
+		if (stream) { stream.stop(); }
+	}
+})();
+
+
+
+
+
+
+
+
 
 
 
@@ -309,7 +352,7 @@ if (annyang) {
     },
 
     'go to :urlInput': function(urlInput) {
-      voiceFeedback("Opening url: " + urlInput);
+      voiceFeedback("Opening " + urlInput);
       urlInput = "http://" + urlInput;
       myWindow = window.open(urlInput, "myWindow");
       appendLastCommand("Go to url: <a href=\"" + urlInput + "\" target=_blank title=\"link from voice input\">" + urlInput + "</a>");
