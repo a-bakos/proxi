@@ -307,6 +307,13 @@ if (annyang) {
       myWindow = window.open(googleImageSearchFor, "myWindow");
       appendLastCommand("Performed image search for " + expression);
     },
+
+    'go to :urlInput': function(urlInput) {
+      voiceFeedback("Opening url: " + urlInput);
+      urlInput = "http://" + urlInput;
+      myWindow = window.open(urlInput, "myWindow");
+      appendLastCommand("Go to url: <a href=\"" + urlInput + "\" target=_blank title=\"link from voice input\">" + urlInput + "</a>");
+    },
     
     'name': function() {
       voiceFeedback("my name is Archie Sense.");
