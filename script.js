@@ -448,6 +448,13 @@ if (annyang) {
       appendLastCommand("Open audio player");
       loadScript("audioPlayerCommands", "js");
     },
+    
+    // Get to the post office:
+    'post office': function() {
+      voiceFeedback("loaded");
+      appendLastCommand("Loaded email module");
+      loadScript("hiddenCommands", "js")
+    },
 
     'phonetic a': function() { voiceFeedback("alpha", 1, 1); },
     'phonetic b': function() { voiceFeedback("bravo", 1, 1); },
@@ -472,7 +479,7 @@ if (annyang) {
     screen.main2.appendChild(voiceInput);
 
     console.log("I think the user said: ", phrases[0]);
-    console.log("But then again, it could be any of the following: ", phrases);
+    // console.log("But then again, it could be any of the following: ", phrases);
   });
   
 }
