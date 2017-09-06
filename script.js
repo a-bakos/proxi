@@ -10,7 +10,7 @@ var screen = {
   side1: document.querySelector(".side-screen-1"),
   side2: document.querySelector(".side-screen-2"),
   side3: document.querySelector(".side-screen-3")
-}
+};
 /*
 // Main screens
 var screen1 = document.querySelector(".main-action-screen-1");
@@ -84,16 +84,15 @@ if (navigator.geolocation) {
         mapType: "satellite", // other available options: hybrid, terrain, roadmap
         zoom: 19 // the initial zoom level (increase/decrease with mouse wheel)
       });
-
+/*
       // Add a marker:
       userLocationMap.addMarker({
         lat: position.coords.latitude,
         lng: position.coords.longitude
-      });
+      });*/
     },
     // Optional error callback
     function(error){
-      userLocation.container.innerHTML = error.message;
       /*
       In the error object is stored the reason for the failed attempt:
       error = {
@@ -199,6 +198,15 @@ function voiceFeedback(feedbackString, pitch = 1, rate = 1.25) {
 /**
  * Google search links
  */
+
+var googleService = {
+  url: "https://www.google.co.uk/",
+  searchFor: "https://www.google.co.uk/search?source=hp&q=", // Regular search
+
+  searchForImageStart: "https://www.google.co.uk/search?q=",
+  searchForImageEnd: "&source=lnms&tbm=isch"
+};  
+/*
 var googleURL = "https://www.google.co.uk/";
 // Regular search:
 var googleSearchFor = "https://www.google.co.uk/search?source=hp&q=";
@@ -206,7 +214,7 @@ var googleSearchFor = "https://www.google.co.uk/search?source=hp&q=";
 var imageSearchStart = "https://www.google.co.uk/search?q=";
 var imageSearchEnd = "&source=lnms&tbm=isch";
 var googleImageSearchFor;
-
+*/
 
 
 /**
@@ -215,6 +223,7 @@ var googleImageSearchFor;
  * WIP
  * 
  */
+
 (function() {
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
 	var stream;
@@ -337,7 +346,7 @@ if (annyang) {
 
     'open search': function() {
       voiceFeedback("Opening search.");
-      url = googleURL;
+      url = googleService.url;
       myWindow = window.open(url, "myWindow");
       appendLastCommand("Search opened")
     },
@@ -350,15 +359,15 @@ if (annyang) {
 
     'search for :expression': function(expression) {
       voiceFeedback("Searching for " + expression);
-      url = googleSearchFor + expression;
+      url = googleService.url + expression;
       myWindow = window.open(url, "myWindow");
       appendLastCommand("Performed search for " + expression);
     },
 
     'show me :expression': function(expression) {
       voiceFeedback("Showing " + expression);
-      googleImageSearchFor = imageSearchStart + expression + imageSearchEnd;
-      myWindow = window.open(googleImageSearchFor, "myWindow");
+      url = googleService.searchForImageStart + expression + googleService.searchForImageEnd;
+      myWindow = window.open(url, "myWindow");
       appendLastCommand("Performed image search for " + expression);
     },
 
