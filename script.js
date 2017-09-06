@@ -1,7 +1,111 @@
 "use strict";
 
-// DOM element hooks
+(function initApp() {
+  displayDateTime();
 
+})();
+
+
+
+
+/**
+ * Script loading
+ *
+ * Use it as: loadScript(filename[, folder]);
+ * filename: string, required
+ * folder: string, optional
+ *
+ * This function builds up a <script> element and appends it to the end of the
+ * <body> tag.
+ *
+ * "filename" specifies the actual JS file to be included. Use the file's name
+ * (without file extension) as the first and required parameter. This will also
+ * be the #ID of this HTML element.
+ *
+ * "folder" is the path to the JS file you want to include. Leave the last
+ * forward slash out.
+ *
+ * Examples:
+ *
+ * * 1. JS file is in the same folder: loadScript("your-js-file");
+ * Result: <script type="text/javascript" src="your-js-file" id="your-js-file"></script>
+ *
+ * * 2. JS file in is another folder: loadScript("your-js-file", "js/components");
+ * Result: <script type="text/javascript" src="js/components/your-js-file" id="your-js-file"></script>
+ *
+ * See also removeScript() function.
+ */
+function loadScript(filename, folder) {
+  var scriptElem = document.createElement("script");
+  var body = document.querySelector("body");
+  scriptElem.type = "text/javascript";
+
+  if (typeof folder === 'undefined') {
+    scriptElem.src = filename + ".js";
+  }
+  else {
+    scriptElem.src = folder + "/" + filename + ".js";
+  }
+
+  scriptElem.id = filename;
+  body.appendChild(scriptElem);
+  console.log("Added " + filename + " script to body.");
+}
+
+/**
+ * Script removing
+ *
+ * Use it as: removeScript(filename);
+ * filename: string, required
+ *
+ * Based on the filename, which is also an #ID, the functions removes the
+ * <script> tag from the <body>.
+ *
+ * See also scriptLoading() function.
+ */
+function removeScript(filename) {
+  var scriptElem = document.getElementById(filename);
+  var body = document.querySelector("body");
+  body.removeChild(scriptElem);
+  console.log("Removed the " + filename + " script from body.");
+}
+
+/**
+ * Page reloading
+ */
+function reloadPage() {
+  voiceFeedback("reloading", 1, 1.5);
+
+  // TRUE = reload current page from the server
+  // FALSE = reload the page from cache
+  document.location.reload(true);
+  appendLastCommand("Flushing memory");
+}
+
+/**
+ * Enter into full screen mode
+ * FullScreen API -- it has to be triggered by the user,
+ * there is no way of loading the page right into full screen mode.
+ */
+var fullScreenButton = document.querySelector(".full-screen-button");
+  
+fullScreenButton.addEventListener("click", function() {
+  function enterFullScreen(element) {
+    if(element.requestFullscreen) {
+      element.requestFullscreen();
+    }
+    else if(element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    }
+  }
+  enterFullscreen(document.documentElement) // the whole page
+}, false);
+
+
+
+/**
+ * Defining screens
+ */
 var screen = {
   // Main action screens
   main1: document.querySelector(".main-action-screen-1"),
@@ -11,18 +115,7 @@ var screen = {
   side2: document.querySelector(".side-screen-2"),
   side3: document.querySelector(".side-screen-3")
 };
-/*
-// Main screens
-var screen1 = document.querySelector(".main-action-screen-1");
-var screen2 = document.querySelector(".main-action-screen-2");
-// Side screens
-var sideScreen1 = document.querySelector(".side-screen-1");
-var sideScreen2 = document.querySelector(".side-screen-2");
-var sideScreen3 = document.querySelector(".side-screen-3");
-// Status indicator
-var statusLed = document.querySelector(".status-led");
-var statusText = document.querySelector(".status-text");
-*/
+
 /**
  * GEOLOCATION
  *
@@ -114,7 +207,7 @@ else {
  * Clock -- date and time display
  * IIFE + re-calls itself every 3 seconds.
  */
-(function displayDateTime() {
+function displayDateTime() {
   var dateDisplay = document.querySelector(".clock-date");
   var timeDisplay = document.querySelector(".clock-time");
 
@@ -147,7 +240,7 @@ else {
 
     displayDateTime(); // Recursion.
   }, 3000);
-})();
+};
 
 /**
  * Last commands section
@@ -196,26 +289,15 @@ function voiceFeedback(feedbackString, pitch = 1, rate = 1.25) {
 }
 
 /**
- * Google search links
+ * Google links
  */
-
 var googleService = {
   url: "https://www.google.co.uk/",
   searchFor: "https://www.google.co.uk/search?source=hp&q=", // Regular search
 
   searchForImageStart: "https://www.google.co.uk/search?q=",
   searchForImageEnd: "&source=lnms&tbm=isch"
-};  
-/*
-var googleURL = "https://www.google.co.uk/";
-// Regular search:
-var googleSearchFor = "https://www.google.co.uk/search?source=hp&q=";
-// Image search:
-var imageSearchStart = "https://www.google.co.uk/search?q=";
-var imageSearchEnd = "&source=lnms&tbm=isch";
-var googleImageSearchFor;
-*/
-
+};
 
 /**
  * 
@@ -223,7 +305,6 @@ var googleImageSearchFor;
  * WIP
  * 
  */
-
 (function() {
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
 	var stream;
@@ -255,82 +336,6 @@ var googleImageSearchFor;
 })();
 
 
-
-/**
- * Page reloading
- */
-function reloadPage() {
-  voiceFeedback("reloading", 1, 1.5);
-
-  // TRUE = reload current page from the server
-  // FALSE = reload the page from cache
-  document.location.reload(true);
-  appendLastCommand("Flushing memory");
-}
-
-/**
- * Script loading
- *
- * Use it as: loadScript(filename[, folder]);
- * filename: string, required
- * folder: string, optional
- *
- * This function builds up a <script> element and appends it to the end of the
- * <body> tag.
- *
- * "filename" specifies the actual JS file to be included. Use the file's name
- * (without file extension) as the first and required parameter. This will also
- * be the #ID of this HTML element.
- *
- * "folder" is the path to the JS file you want to include. Leave the last
- * forward slash out.
- *
- * Examples:
- *
- * * 1. JS file is in the same folder: loadScript("your-js-file");
- * Result: <script type="text/javascript" src="your-js-file" id="your-js-file"></script>
- *
- * * 2. JS file in is another folder: loadScript("your-js-file", "js/components");
- * Result: <script type="text/javascript" src="js/components/your-js-file" id="your-js-file"></script>
- *
- * See also removeScript() function.
- */
-function loadScript(filename, folder) {
-  var scriptElem = document.createElement("script");
-  var body = document.querySelector("body");
-  scriptElem.type = "text/javascript";
-
-  if (typeof folder === 'undefined') {
-    scriptElem.src = filename + ".js";
-  }
-  else {
-    scriptElem.src = folder + "/" + filename + ".js";
-  }
-
-  scriptElem.id = filename;
-  body.appendChild(scriptElem);
-  console.log("Added " + filename + " script to body.");
-}
-
-/**
- * Script removing
- *
- * Use it as: removeScript(filename);
- * filename: string, required
- *
- * Based on the filename, which is also an #ID, the functions removes the
- * <script> tag from the <body>.
- *
- * See also scriptLoading() function.
- */
-function removeScript(filename) {
-  var scriptElem = document.getElementById(filename);
-  var body = document.querySelector("body");
-  body.removeChild(scriptElem);
-  console.log("Removed the " + filename + " script from body.");
-}
-
-
 var url;
 var myWindow; // For new windows
 
@@ -342,7 +347,7 @@ if (annyang) {
   // Define high-level commands.
   // First the text, and then the function it should call
 
-  var commands = {
+  var searchCommands = {
 
     'open search': function() {
       voiceFeedback("Opening search.");
@@ -359,7 +364,7 @@ if (annyang) {
 
     'search for :expression': function(expression) {
       voiceFeedback("Searching for " + expression);
-      url = googleService.url + expression;
+      url = googleService.searchFor + expression;
       myWindow = window.open(url, "myWindow");
       appendLastCommand("Performed search for " + expression);
     },
@@ -376,19 +381,15 @@ if (annyang) {
       urlInput = "http://" + urlInput;
       myWindow = window.open(urlInput, "myWindow");
       appendLastCommand("Go to url: <a href=\"" + urlInput + "\" target=_blank title=\"link from voice input\">" + urlInput + "</a>");
-    },
-    
-    'name': function() {
-      voiceFeedback("my name is Archie Sense.");
-    },
-    
+    }
+  };
     /* this is broken
     ':gratitude': {
       'regexp': /^(thanks|thank you|t h x|cheers|cheerio|one)$/,
       'callback': voiceFeedback("You're welcome.")
     },
 */
-
+  var commands = {
     // Reload page commands
     'reload': function() { reloadPage(); },
     'refresh': function() { reloadPage(); },
@@ -438,6 +439,7 @@ if (annyang) {
   };
 
   // Add commands to annyang
+  annyang.addCommands(searchCommands);
   annyang.addCommands(commands);
 
   // Start listening. Call this here, or attach this call to an event, button, etc.
