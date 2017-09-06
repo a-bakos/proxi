@@ -33,5 +33,5 @@
 	- maybe use it for saved files
 - one more section on the left side, currently not used
 
-### other 
-- add style.map to .gitignore
+### other
+- [done] add style.map to .gitignore

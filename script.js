@@ -2,6 +2,16 @@
 
 // DOM element hooks
 
+var screen = {
+  // Main action screens
+  main1: document.querySelector(".main-action-screen-1"),
+  main2: document.querySelector(".main-action-screen-2"),
+  // Side screens
+  side1: document.querySelector(".side-screen-1"),
+  side2: document.querySelector(".side-screen-2"),
+  side3: document.querySelector(".side-screen-3")
+}
+/*
 // Main screens
 var screen1 = document.querySelector(".main-action-screen-1");
 var screen2 = document.querySelector(".main-action-screen-2");
@@ -12,25 +22,27 @@ var sideScreen3 = document.querySelector(".side-screen-3");
 // Status indicator
 var statusLed = document.querySelector(".status-led");
 var statusText = document.querySelector(".status-text");
-
+*/
 /**
  * GEOLOCATION
  *
  * Detecting location using Geolocation API
  */
-var userLocation = document.querySelector(".location");
-var userLocationLatitude = document.querySelector(".location-latitude");
-var userLocationLongitude = document.querySelector(".location-longitude");
-var userLocationAltitude = document.querySelector(".location-altitude");
-var userLocationAccuracy = document.querySelector(".location-accuracy");
-var userLocationAltitudeAccuracy = document.querySelector(".location-altitude-accuracy");
-var userLocationHeading = document.querySelector(".location-heading");
-var userLocationSpeed = document.querySelector(".location-speed");
-var userLocationTimestamp = document.querySelector(".location-timestamp");
+var userLocation = {
+  container: document.querySelector(".location"),
+  latitude: document.querySelector(".location-latitude"),
+  longitude: document.querySelector(".location-longitude"),
+  altitude: document.querySelector(".location-altitude"),
+  accuracy: document.querySelector(".location-accuracy"),
+  altitudeAccuracy: document.querySelector(".location-altitude-accuracy"),
+  heading: document.querySelector(".location-heading"),
+  speed: document.querySelector(".location-speed"),
+  timestamp: document.querySelector(".location-timestamp"),
 
-// Home coordinates:
-var locationHomeLatitude = 51.455948;
-var locationHomeLongitude = -0.9714347000000001;
+  // Home coordinates:
+  homeLatitude: 51.455948,
+  homeLongitude: -0.9714347000000001
+};
 
 if (navigator.geolocation) {
   // geolocation is available
@@ -54,14 +66,14 @@ if (navigator.geolocation) {
       */
 
       // Showing general information, coordinates, altitude, whatever the object can offer
-      userLocationLatitude.innerHTML = position.coords.latitude;
-      userLocationLongitude.innerHTML = position.coords.longitude;
-      userLocationAltitude.innerHTML = position.coords.altitude;
-      userLocationAccuracy.innerHTML = position.coords.accuracy;
-      userLocationAltitudeAccuracy.innerHTML = position.coords.altitudeAccuracy;
-      userLocationHeading.innerHTML = position.coords.heading;
-      userLocationSpeed.innerHTML = position.coords.speed;
-      userLocationTimestamp.innerHTML = position.timestamp;
+      userLocation.latitude.innerHTML = position.coords.latitude;
+      userLocation.longitude.innerHTML = position.coords.longitude;
+      userLocation.altitude.innerHTML = position.coords.altitude;
+      userLocation.accuracy.innerHTML = position.coords.accuracy;
+      userLocation.altitudeAccuracy.innerHTML = position.coords.altitudeAccuracy;
+      userLocation.heading.innerHTML = position.coords.heading;
+      userLocation.speed.innerHTML = position.coords.speed;
+      userLocation.timestamp.innerHTML = position.timestamp;
 
       var targetElement = ".location-map"; // This is where to display the map
 
@@ -81,7 +93,7 @@ if (navigator.geolocation) {
     },
     // Optional error callback
     function(error){
-      userLocation.innerHTML = error.message;
+      userLocation.container.innerHTML = error.message;
       /*
       In the error object is stored the reason for the failed attempt:
       error = {
@@ -430,7 +442,7 @@ if (annyang) {
     var voiceInput = document.createElement("p");
     voiceInput.classList.add("voice-input");
     voiceInput.innerHTML = phrases[0];
-    screen1.appendChild(voiceInput);
+    screen.main1.appendChild(voiceInput);
 
     console.log("I think the user said: ", phrases[0]);
     console.log("But then again, it could be any of the following: ", phrases);

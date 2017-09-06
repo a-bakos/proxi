@@ -5,7 +5,7 @@
 var audioPlayerIsOpen = false;
 
 // Create the whole audio player element
-function buildAudioPlayer(targetLocation = sideScreen1) {
+function buildAudioPlayer(targetLocation = screen.side1) {
   // Build the wrapper
   var audioPlayerContainer = document.createElement("div");
   audioPlayerContainer.classList.add("audio-player-container");
@@ -24,9 +24,9 @@ function buildAudioPlayer(targetLocation = sideScreen1) {
 }
 
 // Remove the audio player from the DOM
-function removeAudioPlayer(targetLocation = sideScreen1) {
+function removeAudioPlayer() {
   var audioPlayerContainer = document.querySelector(".audio-player-container");
-  targetLocation.removeChild(audioPlayerContainer);
+  audioPlayerContainer.parentElement.removeChild(audioPlayerContainer);
 }
 
 function playAudio() {
