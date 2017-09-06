@@ -83,23 +83,38 @@ function reloadPage() {
 }
 
 /**
- * Enter into full screen mode
- * FullScreen API -- it has to be triggered by the user,
- * there is no way of loading the page right into full screen mode.
+ * Full screen mode
+ *
+ * FullScreen API -- it has to be triggered by the user, there is no way of
+ * loading the page or an element right into full screen mode.
+ *
+ * elementToClick is the element that has to be clicked to trigger full screen
+ * mode on targetElement.
+ * Obviously, these elements have to be defined in a variable upfront.
  */
-var fullScreenButton = document.querySelector(".full-screen-button");
-  
-fullScreenButton.addEventListener("click", function() {
-  function enterFullScreen(element) {
-    if(element.requestFullscreen) {
-      element.requestFullscreen();
+
+
+function enterFullScreenMode(elementToClick, targetElement) {
+  elementToClick.addEventListener("click", function() {
+    //targetElement.classList.add("in-full-screen-mode");
+    var requestFullScreen = targetElement.requestFullscreen || targetElement.webkitRequestFullScreen;
+    requestFullScreen.call(targetElement);
+  });
+}
+
+function exitFullScreenMode(elementToClick, targetElement) {
+  elementToClick.addEventListener("click", function() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
     }
-    else if(element.webkitRequestFullscreen) {
-      element.webkitRequestFullscreen();
+    else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
     }
-  }
-  enterFullscreen(document.documentElement) // the whole page
-}, false);
+  });
+}
+
+
+
 
 
 
@@ -305,10 +320,12 @@ var googleService = {
  * WIP
  * 
  */
+
+var video = document.querySelector('.stream-video');
+
 (function() {
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
 	var stream;
-	var video = document.querySelector('.stream-video');
 	document.querySelector('.stream-start').onclick = function() {
 		if (!navigator.getUserMedia) {
 			alert('Sorry, this isn\'t happening for your browser.');
@@ -334,7 +351,6 @@ var googleService = {
 		if (stream) { stream.stop(); }
 	}
 })();
-
 
 var url;
 var myWindow; // For new windows
@@ -486,3 +502,8 @@ recognition.onresult = function(event) {
 recognition.start();
 
 */
+
+
+// Full screen mode listeners:
+enterFullScreenMode(video, video);
+exitFullScreenMode(video, video);
