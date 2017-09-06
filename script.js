@@ -442,7 +442,7 @@ if (annyang) {
     var voiceInput = document.createElement("p");
     voiceInput.classList.add("voice-input");
     voiceInput.innerHTML = phrases[0];
-    screen.main1.appendChild(voiceInput);
+    screen.main2.appendChild(voiceInput);
 
     console.log("I think the user said: ", phrases[0]);
     console.log("But then again, it could be any of the following: ", phrases);
