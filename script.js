@@ -1,5 +1,8 @@
 "use strict";
 
+/**
+ * Functions to load on startup
+ */
 (function initApp() {
   displayDateTime();
 
@@ -510,6 +513,43 @@ recognition.start();
 
 */
 
+
+
+
+/**
+ * File saver things
+ */
+var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+
+var saver = document.querySelector(".saver");
+
+saver.addEventListener("click", function() {
+  saveAs(blob, "hello world.txt");
+}, false)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Event listeners
+ */
 
 // Full screen mode listeners:
 enterFullScreenMode(video, video);
