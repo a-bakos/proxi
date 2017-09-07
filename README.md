@@ -54,6 +54,7 @@ https://www.google.co.uk/maps/place/Leeds/
         });
     });
 ```
+- weather check, maybe `https://a12k.io/reallysimpleweather` or `http://simpleweatherjs.com/`
 
 ### screen sections
 
@@ -65,9 +66,6 @@ https://www.google.co.uk/maps/place/Leeds/
 - [done] side screen 3
 	- maybe use it for saved files
 - one more section on the left side, currently not used
-
-### other
-- [done] add style.map to .gitignore
 
 ### next
 - gather inspiration for ui
@@ -82,10 +80,12 @@ https://www.google.co.uk/maps/place/Leeds/
 - working google map
 - last commands list that records the events
 - date / time display
+- weather details display
 - user dictation [BVC]
 - google search lookup [BVC]
 - opening url in a new tab [BVC]
 - closing previously opened tabs [BVC]
+- copy / paste text
 - text file creation: making notes, adding title to the note, eg shopping list [BVC]
 - file saving [BVC]
 - constant logging to file
@@ -94,4 +94,4 @@ https://www.google.co.uk/maps/place/Leeds/
 
 - sending files via bluetooth or email (php?) [BVC]
 - search locations on google maps [BVC]
-
+- voice controlled rich text editor [BVC]
