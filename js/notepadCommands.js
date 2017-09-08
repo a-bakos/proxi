@@ -89,7 +89,7 @@ if (annyang) {
     },
 
     /*
-    does not work
+    does not work yet
     'clear note': function() {
       annyang.removeCallback('result');
       var noteContent = document.querySelector(".note-content");
@@ -100,6 +100,7 @@ if (annyang) {
     */
 
     // Delete the last item on the list.
+    // THIS NOW IS COMPLETELY THE SAME AS STOP EDITING
     // It has to be called twice - fix this later!
     'delete': function() {
       annyang.removeCallback('result');

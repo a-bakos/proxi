@@ -50,9 +50,15 @@ function loadScript(filename, folder) {
     scriptElem.src = folder + "/" + filename + ".js";
   }
 
-  scriptElem.id = filename;
-  body.appendChild(scriptElem);
-  console.log("Added " + filename + " script to body.");
+  // Prevent scripts to be loaded more than once
+  if (!document.querySelector("#" + filename)) {
+    scriptElem.id = filename;
+    body.appendChild(scriptElem);
+    console.log("Added " + filename + " script to body.");
+  }
+  else {
+    console.log("Module has already been loaded.")
+  }
 }
 
 /**
