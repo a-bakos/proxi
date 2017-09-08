@@ -400,8 +400,15 @@ if (annyang) {
       urlInput = "http://" + urlInput;
       myWindow = window.open(urlInput, "myWindow");
       appendLastCommand("Go to url: <a href=\"" + urlInput + "\" target=_blank title=\"link from voice input\">" + urlInput + "</a>");
+    },
+    
+    // filesaver test
+    'save': function() {
+      saveAs(blob, "hello world.txt");
+      console.log("save?");
     }
   };
+  
     /* this is broken
     ':gratitude': {
       'regexp': /^(thanks|thank you|t h x|cheers|cheerio|one)$/,
@@ -451,29 +458,38 @@ if (annyang) {
       appendLastCommand("Open audio player");
       loadScript("audioPlayerCommands", "js");
     },
-    
-    // Get to the post office:
-    'post office': function() {
-      voiceFeedback("loaded");
-      appendLastCommand("Loaded email module");
-      loadScript("hiddenCommands", "js")
-    },
+
 
     'phonetic a': function() { voiceFeedback("alpha", 1, 1); },
     'phonetic b': function() { voiceFeedback("bravo", 1, 1); },
     'phonetic c': function() { voiceFeedback("charlie", 1, 1); }
+
+  };
+
+
+
+    var hiddenCommands = {
+    // Get to the post office:
+    'load post office': function() {
+      voiceFeedback("loaded");
+      appendLastCommand("Loaded email module");
+      loadScript("hiddenCommands", "js")
+    }
+
+
   };
 
   // Add commands to annyang
   annyang.addCommands(searchCommands);
   annyang.addCommands(commands);
+  annyang.addCommands(hiddenCommands);
 
   // Start listening. Call this here, or attach this call to an event, button, etc.
   annyang.start();
   annyang.debug(true);
   
   /**
-   * Record voice input
+   * Record voice input as text
    */
   annyang.addCallback('result', function(phrases) {
     var voiceInput = document.createElement("p");

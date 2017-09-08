@@ -2,24 +2,47 @@
 
 ### ideas
 
-- [done] add access to camera
+**webcam**
+- add access to camera
+	- [done] manual opening
+	- voice query
+
+**regexp**
 - dive into JS regexp
 	- see if JS can read source code with it
+
+**php**
 - maybe add php base
 - also utilise php for form validation + file reading, saving
 	- plus, look into node js, which can be used instead of php
+
+
 - find a name for the project
+
+**refresh**
 - [done] reload / refresh / empty memory
+
+**file saving**
 - save img / [done] files
+
+
 - overall volume voice control
+
+**status bar**
 - status bar:
 	- [done] location
 	- listening status
 	- $_SERVER details
 	- [done] date / time
-- media player, [done]<audio>, <video>
+
+**media player**
+- [done]<audio> player,
+- <video>
+
+
 - notepad:
 	- eg. shopping list
+
 - full log of events
 - [failed] load in full-screen mode
 - bluetooth api
@@ -55,6 +78,18 @@ https://www.google.co.uk/maps/place/Leeds/
     });
 ```
 - weather check, maybe `https://a12k.io/reallysimpleweather` or `http://simpleweatherjs.com/`
+- p5js.org
+
+**modes**
+	- use boolean switch for this
+	- fast mode
+	- silent mode
+
+**modules**
+	- open modules list
+		- open modules in tempbox?
+	- maintenance mode
+	- speak current time and date
 
 ### screen sections
 
@@ -69,8 +104,11 @@ https://www.google.co.uk/maps/place/Leeds/
 
 ### next
 - gather inspiration for ui
+- find out if filesaver.js can have a different output folder specified
 
 ## Basic notable features will include a/an/the:
+
+all required in working order for the v1.0.0
 
 **[BVC]** = by voice control
 
@@ -80,7 +118,9 @@ https://www.google.co.uk/maps/place/Leeds/
 - working google map
 - last commands list that records the events
 - date / time display
+	- respond to voice query
 - weather details display
+	- respond to voice query
 - user dictation [BVC]
 - google search lookup [BVC]
 - opening url in a new tab [BVC]
@@ -89,9 +129,13 @@ https://www.google.co.uk/maps/place/Leeds/
 - text file creation: making notes, adding title to the note, eg shopping list [BVC]
 - file saving [BVC]
 - constant logging to file
+- silent mode
+- fast mode
+- open module management
 
 ## Features++
 
 - sending files via bluetooth or email (php?) [BVC]
 - search locations on google maps [BVC]
 - voice controlled rich text editor [BVC]
+- maintenance mode [BVC]
