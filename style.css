@@ -262,6 +262,11 @@ body {
   background: white;
 }
 
+/* line 15, C:/Git/ai/sass/components/_notepad.scss */
+.last-line-note {
+  background: red;
+}
+
 /* line 21, C:/Git/ai/sass/style.scss */
 .tempbox {
   position: absolute;

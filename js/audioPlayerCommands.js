@@ -46,28 +46,32 @@ function pauseAudio() {
 }
 
 // IIFE runs right after the audioPlayerCommands file has been loaded
-(function initialize() {
+(function initializeAudioPlayer() {
+  appendLastCommand("Open audio player");
   buildAudioPlayer();
   audioPlayerIsOpen = true;
+  return audioPlayerIsOpen;
 })();
+
+if (audioPlayerIsOpen === true) {
+  voiceFeedback("playing music");
+  appendLastCommand("Playing music");
+  playAudio();
+}
+else {
+  voiceFeedback("uh uh");
+}
+
 
 if (annyang) {
   var audioPlayerCommands = {
 
-    'play': function() {
-      if (audioPlayerIsOpen === true) {
-        voiceFeedback("playing music");
-        playAudio();
-        appendLastCommand("Play music")
-      }
-      else {
-        voiceFeedback("open the player first");
-        appendLastCommand("Warning: open the player first")
-      }
+    'continue music': function() {
+      playAudio();
+      appendLastCommand("Resume music")
     },
-
+    
     'stop music': function() {
-      voiceFeedback("pausing music");
       pauseAudio();
       appendLastCommand("Music paused")
     },

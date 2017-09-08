@@ -39,10 +39,6 @@
 - [done]<audio> player,
 - <video>
 
-
-- notepad:
-	- eg. shopping list
-
 - full log of events
 - [failed] load in full-screen mode
 - bluetooth api
@@ -82,6 +78,12 @@ https://www.google.co.uk/maps/place/Leeds/
 - orientation, https://www.html5rocks.com/en/tutorials/device/orientation/
 - switch/case :expression evaluation?
 - prevent modules to be called more than once - fix this inside scriptLoader()
+
+**notes**
+- notepad:
+	- eg. shopping list
+- add light sound effect after each successful voice unit when in notepad mode
+- capitalize first letter in title
 
 **modes**
 	- use boolean switch for this

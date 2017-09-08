@@ -453,9 +453,7 @@ if (annyang) {
     },
 
     // Audio player
-    'open audio player': function() {
-      voiceFeedback("ok");
-      appendLastCommand("Open audio player");
+    'play music': function() {
       loadScript("audioPlayerCommands", "js");
     },
 
@@ -480,8 +478,6 @@ if (annyang) {
     var noteCommands = {
     // Get to the post office:
     'note': function() {
-      voiceFeedback("ok");
-      appendLastCommand("open notepad");
       loadScript("notepadCommands", "js")
     }
 
