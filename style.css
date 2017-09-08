@@ -249,7 +249,20 @@ body {
   outline: none;
 }
 
-/* line 20, C:/Git/ai/sass/style.scss */
+/* line 4, C:/Git/ai/sass/components/_notepad.scss */
+.note-title {
+  display: block;
+  background: purple;
+  font-size: 2em;
+}
+
+/* line 10, C:/Git/ai/sass/components/_notepad.scss */
+.note-content {
+  display: inline-block;
+  background: white;
+}
+
+/* line 21, C:/Git/ai/sass/style.scss */
 .tempbox {
   position: absolute;
   top: 5vh;
@@ -259,7 +272,7 @@ body {
   background: green;
 }
 
-/* line 31, C:/Git/ai/sass/style.scss */
+/* line 32, C:/Git/ai/sass/style.scss */
 .audio-player-container {
   position: relative;
   top: 0;

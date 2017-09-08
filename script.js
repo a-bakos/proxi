@@ -469,13 +469,21 @@ if (annyang) {
 
 
     var hiddenCommands = {
-    // Get to the post office:
+    // "Get to the post office":
     'load post office': function() {
       voiceFeedback("loaded");
       appendLastCommand("Loaded email module");
       loadScript("hiddenCommands", "js")
     }
+ };
 
+    var noteCommands = {
+    // Get to the post office:
+    'note': function() {
+      voiceFeedback("ok");
+      appendLastCommand("open notepad");
+      loadScript("notepadCommands", "js")
+    }
 
   };
 
@@ -483,26 +491,27 @@ if (annyang) {
   annyang.addCommands(searchCommands);
   annyang.addCommands(commands);
   annyang.addCommands(hiddenCommands);
+  annyang.addCommands(noteCommands);
 
   // Start listening. Call this here, or attach this call to an event, button, etc.
   annyang.start();
   annyang.debug(true);
-  
+
   /**
    * Record voice input as text
-   */
+   *//*
   annyang.addCallback('result', function(phrases) {
     var voiceInput = document.createElement("p");
     voiceInput.classList.add("voice-input");
     voiceInput.innerHTML = phrases[0];
     screen.main2.appendChild(voiceInput);
 
-    console.log("I think the user said: ", phrases[0]);
+    // `console.log("I think the user said: ", phrases[0]);
     // console.log("But then again, it could be any of the following: ", phrases);
   });
   
+*/
 }
-
 
 
 /*

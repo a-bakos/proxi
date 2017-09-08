@@ -79,6 +79,9 @@ https://www.google.co.uk/maps/place/Leeds/
 ```
 - weather check, maybe `https://a12k.io/reallysimpleweather` or `http://simpleweatherjs.com/`
 - p5js.org
+- orientation, https://www.html5rocks.com/en/tutorials/device/orientation/
+- switch/case :expression evaluation?
+- prevent modules to be called more than once - fix this inside scriptLoader()
 
 **modes**
 	- use boolean switch for this
