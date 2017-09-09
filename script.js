@@ -1,14 +1,40 @@
 "use strict";
 
+
+
+/**
+ * Defining system soundpaths
+ */
+var systemSounds = {
+  accept: "files/sounds/accept.wav",
+  reject: "files/sounds/reject.wav",
+  loadShort: "files/sounds/loading-short.wav",
+  loadMed: "files/sounds/loading-med.wav",
+  loadLong: "files/sounds/loading-long.wav",
+  error: "files/sounds/error.wav",
+  warning: "files/sounds/warning.wav",
+  append: "files/sounds/append.wav",
+};
+
+/**
+ * General sound player for system sounds
+ */
+function soundPlayer(soundPath) {
+  var sound = document.querySelector("#system-sound");
+  sound.setAttribute("src", soundPath);
+
+  if (sound.paused) {
+    sound.play();
+  }
+}
+
 /**
  * Functions to load on startup
  */
 (function initApp() {
+  soundPlayer(systemSounds.loadLong);
   displayDateTime();
-
 })();
-
-
 
 
 /**
@@ -431,6 +457,7 @@ if (annyang) {
 
     'test': function() {
       voiceFeedback("Test, check 1 2 3", 1, 2);
+      soundPlayer(systemSounds.accept);
       appendLastCommand("Test command executed");
     },
 
@@ -462,7 +489,6 @@ if (annyang) {
     'play music': function() {
       loadScript("audioPlayerCommands", "js");
     },
-
 
     'phonetic a': function() { voiceFeedback("alpha", 1, 1); },
     'phonetic b': function() { voiceFeedback("bravo", 1, 1); },
@@ -553,21 +579,6 @@ var saver = document.querySelector(".saver");
 saver.addEventListener("click", function() {
   saveAs(blob, "hello world.txt");
 }, false)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

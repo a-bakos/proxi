@@ -16,8 +16,10 @@
 - also utilise php for form validation + file reading, saving
 	- plus, look into node js, which can be used instead of php
 
-
+**project name**
 - find a name for the project
+	- frank
+	- prox[i/y]
 
 **refresh**
 - [done] reload / refresh / empty memory
@@ -25,7 +27,7 @@
 **file saving**
 - save img / [done] files
 
-
+**volume**
 - overall volume voice control
 
 **status bar**
@@ -37,8 +39,9 @@
 
 **media player**
 - [done]<audio> player,
-- <video>
+- video
 
+**dump**
 - full log of events
 - [failed] load in full-screen mode
 - bluetooth api
@@ -77,11 +80,17 @@ https://www.google.co.uk/maps/place/Leeds/
 - p5js.org
 - orientation, https://www.html5rocks.com/en/tutorials/device/orientation/
 - switch/case :expression evaluation?
-- prevent modules to be called more than once - fix this inside scriptLoader()
+- [done] prevent modules to be called more than once - fix this inside scriptLoader()
+- face recog -- trackerJS
+- object detection
 
 **notes**
 - notepad:
 	- eg. shopping list
+- add note
+	- [done] title
+	- [done] body
+	- [done] container
 - add light sound effect after each successful voice unit when in notepad mode
 - capitalize first letter in title
 
@@ -144,3 +153,5 @@ all required in working order for the v1.0.0
 - search locations on google maps [BVC]
 - voice controlled rich text editor [BVC]
 - maintenance mode [BVC]
+- face recognition
+- object detection

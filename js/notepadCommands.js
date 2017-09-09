@@ -44,6 +44,7 @@ function removeNotepad() {
 (function initializeNotepad() {
   voiceFeedback("ok");
   appendLastCommand("Open notepad");
+  soundPlayer(systemSounds.loadMed);
   buildNotepad();
   appendLastCommand("Create a new note");
 })();
@@ -53,7 +54,7 @@ if (annyang) {
   var notepadCommands = {
 
     // Set the title the note
-    'set (the) title': function() {
+    'set (the) title (to)': function() {
       appendLastCommand("Waiting for title");
 
       var noteTitle = document.querySelector(".note-title");
@@ -67,8 +68,9 @@ if (annyang) {
 
         if (noteTitle.innerHTML.length > 1) {
           annyang.removeCallback('result'); // This exits listening
-          voiceFeedback("Got it!");
+          voiceFeedback("Right, got it!");
           appendLastCommand("Title is set");
+          soundPlayer(systemSounds.accept);
         }
       });
     },
@@ -83,6 +85,7 @@ if (annyang) {
         noteContentText.classList.add("note-dictation");
         noteContentText.innerHTML = phrases[0];
         noteContent.appendChild(noteContentText);
+        soundPlayer(systemSounds.append);
       });
 
       appendLastCommand("Content added");
@@ -113,7 +116,7 @@ if (annyang) {
     },
 
     // Stop editing
-    'stop note': function() {
+    '(ok) stop note': function() {
       annyang.removeCallback('result');
       var noteContent = document.querySelector(".note-content");
       
@@ -123,6 +126,7 @@ if (annyang) {
       var last = noteContentText[noteContentText.length - 1];
       noteContent.removeChild(last);
 
+      soundPlayer(systemSounds.accept);
       voiceFeedback("Note finished");
       appendLastCommand("Note finished");
     },
@@ -135,6 +139,7 @@ if (annyang) {
       removeNotepad();
       noteIsOpen = false;
       voiceFeedback("Closing notepad");
+      soundPlayer(systemSounds.loadShort);
       appendLastCommand("Notepad closed");
       removeScript("notepadCommands")
     }
