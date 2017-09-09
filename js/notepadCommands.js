@@ -4,6 +4,22 @@
 
 var noteIsOpen = false;
 
+// This function is to create a short date for inline use
+function inlineDate() {
+  var date = new Date();
+  var day = date.getDate(); // 1 - 31
+  var month = date.getMonth(); // 0 - 11
+  var year = date.getFullYear();
+  
+  month += 1;
+  
+  if (day <= 9)   { day = "0" + day; }
+  if (month <= 9)   { month = "0" + month; }
+
+  var inlineDatesum = day + "-" + month + "-" + year;
+  return inlineDatesum;
+}
+
 /**
  * Build the notepad element
  */
@@ -19,7 +35,7 @@ function buildNotepad(displayNoteHere = screen.main1) {
 
   var noteTitle = document.createElement("p");
   noteTitle.classList.add("note-title");
-  noteTitle.innerHTML = "Note title";
+  noteTitle.innerHTML = "Note title " + inlineDate();
   noteWrapper.appendChild(noteTitle);
 
   var noteContent = document.createElement("p");
@@ -64,7 +80,7 @@ if (annyang) {
       // Listen for the title dictated by voice.
       // A small pause will terminate setting the title.
       annyang.addCallback('result', function(phrases) {
-        noteTitle.innerHTML = phrases[0];
+        noteTitle.innerHTML = phrases[0] + " " + inlineDate();
 
         if (noteTitle.innerHTML.length > 1) {
           annyang.removeCallback('result'); // This exits listening
@@ -106,10 +122,10 @@ if (annyang) {
     // Delete the last item on the list.
     // THIS NOW IS COMPLETELY THE SAME AS STOP EDITING
     // It has to be called twice - fix this later!
-    'delete': function() {
+    'delete (last) (line)': function() {
       annyang.removeCallback('result');
       var noteContent = document.querySelector(".note-content");
-      
+
       var noteContentText = noteContent.querySelectorAll(".note-dictation");
       var first = noteContentText[0];
       var last = noteContentText[noteContentText.length - 1];
@@ -120,7 +136,7 @@ if (annyang) {
     '(ok) stop note': function() {
       annyang.removeCallback('result');
       var noteContent = document.querySelector(".note-content");
-      
+
       // Find & delete the last <p> node, as it is the 'stop note' command itself
       var noteContentText = noteContent.querySelectorAll('p');
       var first = noteContentText[0];
@@ -132,8 +148,21 @@ if (annyang) {
     },
     
     'save note': function() {
-      // utilise the power of filesaver here
-      soundPlayer(systemSounds.loadMed);
+      // Get the title
+      var title = document.querySelector(".note-title");
+      title = title.innerHTML;
+
+      // Get content
+      // This will include the HTML tags as well.
+      // These tags can possibly be removed with regexp.
+      var content = document.querySelector(".note-content");
+      content = content.innerHTML;
+
+      // Save as file
+      var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, title + ".txt");
+      appendLastCommand("Note saved");
+      soundPlayer(systemSounds.accept);
     },
 
     'close note': function() {

@@ -84,6 +84,7 @@ https://www.google.co.uk/maps/place/Leeds/
 - face recog -- trackerJS
 - object detection
 - [done] system sounds
+- separate gmaps out into its own module because it takes a significant chunk from the bandwith and speed on load
 
 **notes**
 - notepad:

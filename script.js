@@ -250,6 +250,8 @@ else {
   // geolocation is not supported
 }
 
+
+
 /**
  * Clock -- date and time display
  * IIFE + re-calls itself every 3 seconds.
