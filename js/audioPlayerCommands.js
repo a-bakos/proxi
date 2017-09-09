@@ -68,13 +68,13 @@ if (annyang) {
   var audioPlayerCommands = {
 
     'continue music': function() {
-      soundPlayer(systemSounds.append);
+      soundPlayer(systemSounds.ok);
       playAudio();
       appendLastCommand("Resume music")
     },
     
     'stop music': function() {
-      soundPlayer(systemSounds.append);
+      soundPlayer(systemSounds.ok);
       pauseAudio();
       appendLastCommand("Music paused")
     },

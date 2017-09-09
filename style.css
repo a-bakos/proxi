@@ -104,6 +104,16 @@ body {
   background-color: hotpink;
 }
 
+/* line 2, C:/Git/ai/sass/components/_audio-player.scss */
+.audio-player-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5vh;
+  background: pink;
+}
+
 /**
  * Current date + time display
  */
@@ -212,6 +222,24 @@ body {
   overflow-Y: auto;
 }
 
+/* line 4, C:/Git/ai/sass/components/_notepad.scss */
+.note-title {
+  display: block;
+  background: purple;
+  font-size: 2em;
+}
+
+/* line 10, C:/Git/ai/sass/components/_notepad.scss */
+.note-content {
+  display: inline-block;
+  background: white;
+}
+
+/* line 15, C:/Git/ai/sass/components/_notepad.scss */
+.last-line-note {
+  background: red;
+}
+
 /* line 1, C:/Git/ai/sass/components/_webcamera.scss */
 .webcam-video-container {
   width: 100%;
@@ -247,34 +275,6 @@ body {
   display: inline-block;
   border: none;
   outline: none;
-}
-
-/* line 4, C:/Git/ai/sass/components/_notepad.scss */
-.note-title {
-  display: block;
-  background: purple;
-  font-size: 2em;
-}
-
-/* line 10, C:/Git/ai/sass/components/_notepad.scss */
-.note-content {
-  display: inline-block;
-  background: white;
-}
-
-/* line 15, C:/Git/ai/sass/components/_notepad.scss */
-.last-line-note {
-  background: red;
-}
-
-/* line 2, C:/Git/ai/sass/components/_audio-player.scss */
-.audio-player-container {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5vh;
-  background: pink;
 }
 
 /* line 22, C:/Git/ai/sass/style.scss */

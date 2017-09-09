@@ -118,7 +118,6 @@ if (annyang) {
 
     // Stop editing
     '(ok) stop note': function() {
-      soundPlayer(systemSounds.accept);
       annyang.removeCallback('result');
       var noteContent = document.querySelector(".note-content");
       

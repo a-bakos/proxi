@@ -83,6 +83,7 @@ https://www.google.co.uk/maps/place/Leeds/
 - [done] prevent modules to be called more than once - fix this inside scriptLoader()
 - face recog -- trackerJS
 - object detection
+- [done] system sounds
 
 **notes**
 - notepad:
