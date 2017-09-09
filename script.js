@@ -1,19 +1,18 @@
 "use strict";
 
-
-
 /**
  * Defining system soundpaths
  */
 var systemSounds = {
   accept: "files/sounds/accept.wav",
-  reject: "files/sounds/reject.wav",
-  loadShort: "files/sounds/loading-short.wav",
-  loadMed: "files/sounds/loading-med.wav",
-  loadLong: "files/sounds/loading-long.wav",
-  error: "files/sounds/error.wav",
-  warning: "files/sounds/warning.wav",
   append: "files/sounds/append.wav",
+  error: "files/sounds/error.wav",
+  loadLong: "files/sounds/loading-long.wav",
+  loadMed: "files/sounds/loading-med.wav",
+  loadShort: "files/sounds/loading-short.wav",
+  ok: "files/sounds/ok.wav",
+  reject: "files/sounds/reject.wav",
+  warning: "files/sounds/warning.wav"
 };
 
 /**
@@ -127,8 +126,6 @@ function reloadPage() {
  * mode on targetElement.
  * Obviously, these elements have to be defined in a variable upfront.
  */
-
-
 function enterFullScreenMode(elementToClick, targetElement) {
   elementToClick.addEventListener("click", function() {
     //targetElement.classList.add("in-full-screen-mode");

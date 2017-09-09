@@ -55,6 +55,7 @@ if (annyang) {
 
     // Set the title the note
     'set (the) title (to)': function() {
+      soundPlayer(systemSounds.ok);
       appendLastCommand("Waiting for title");
 
       var noteTitle = document.querySelector(".note-title");
@@ -63,12 +64,11 @@ if (annyang) {
       // Listen for the title dictated by voice.
       // A small pause will terminate setting the title.
       annyang.addCallback('result', function(phrases) {
-        
         noteTitle.innerHTML = phrases[0];
 
         if (noteTitle.innerHTML.length > 1) {
           annyang.removeCallback('result'); // This exits listening
-          voiceFeedback("Right, got it!");
+          voiceFeedback("Title set");
           appendLastCommand("Title is set");
           soundPlayer(systemSounds.accept);
         }
@@ -76,6 +76,7 @@ if (annyang) {
     },
 
     'write content': function() {
+      soundPlayer(systemSounds.ok);
       voiceFeedback("I am listening");
       appendLastCommand("Waiting for content");
 
@@ -117,6 +118,7 @@ if (annyang) {
 
     // Stop editing
     '(ok) stop note': function() {
+      soundPlayer(systemSounds.accept);
       annyang.removeCallback('result');
       var noteContent = document.querySelector(".note-content");
       
@@ -126,13 +128,13 @@ if (annyang) {
       var last = noteContentText[noteContentText.length - 1];
       noteContent.removeChild(last);
 
-      soundPlayer(systemSounds.accept);
       voiceFeedback("Note finished");
       appendLastCommand("Note finished");
     },
     
     'save note': function() {
       // utilise the power of filesaver here
+      soundPlayer(systemSounds.loadMed);
     },
 
     'close note': function() {

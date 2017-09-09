@@ -54,6 +54,7 @@ function pauseAudio() {
 })();
 
 if (audioPlayerIsOpen === true) {
+  soundPlayer(systemSounds.accept);
   voiceFeedback("playing music");
   appendLastCommand("Playing music");
   playAudio();
@@ -67,16 +68,19 @@ if (annyang) {
   var audioPlayerCommands = {
 
     'continue music': function() {
+      soundPlayer(systemSounds.append);
       playAudio();
       appendLastCommand("Resume music")
     },
     
     'stop music': function() {
+      soundPlayer(systemSounds.append);
       pauseAudio();
       appendLastCommand("Music paused")
     },
 
     'close audio player': function() {
+      soundPlayer(systemSounds.accept);
       voiceFeedback("closing audio player");
       removeAudioPlayer();
       audioPlayerIsOpen = false;
