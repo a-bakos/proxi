@@ -119,8 +119,11 @@ https://www.google.co.uk/maps/place/Leeds/
 - one more section on the left side, currently not used
 
 ### next
-- gather inspiration for ui
+- [done] gather inspiration for ui
+	- the amazing work of Jayse Hansen
+	- also the amazing work of the Cantina Creative studio team
 - find out if filesaver.js can have a different output folder specified
+- create color palette
 
 ## Basic notable features will include a/an/the:
 
