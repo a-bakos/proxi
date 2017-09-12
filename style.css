@@ -47,6 +47,19 @@ body {
   font-family: monospace;
   text-align: center;
   border: 1px solid red;
+  transition: 1s;
+}
+
+/* line 24, C:/Git/ai/sass/layout/_status-bar.scss */
+.status-bar-item:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  content: "";
+  border-top: 1.25rem solid red;
+  border-right: 1.25rem solid green;
+  border-bottom: 1.25rem solid black;
+  border-left: 1.25rem solid yellow;
 }
 
 /* line 1, C:/Git/ai/sass/layout/_side-screen.scss */
