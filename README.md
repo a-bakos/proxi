@@ -1,15 +1,17 @@
 # homebot project
 
+[** Trello board **](https://trello.com/b/Qc2EXxbk)
+
 ### ideas
 
 **webcam**
-- add access to camera
-	- [done] manual opening
-	- voice query
+- [ ] add access to camera
+	- [x] manual opening
+	- [ ] voice query
 
 **regexp**
-- dive into JS regexp
-	- see if JS can read source code with it
+- [ ] dive into JS regexp
+	- [ ] see if JS can read source code with it
 
 **php**
 - maybe add php base
@@ -32,10 +34,10 @@
 
 **status bar**
 - status bar:
-	- [done] location
+	- location
 	- listening status
 	- $_SERVER details
-	- [done] date / time
+	- [x] date / time
 
 **media player**
 - [done]<audio> player,
@@ -131,32 +133,32 @@ all required in working order for the v1.0.0
 
 **[BVC]** = by voice control
 
-- "sci-fi" UI, where the display is divided into several sections
-- basic audio player that is able to play, stop music, maybe change music [BVC]
-- status bar that reacts to user interaction
-- working google map
-- last commands list that records the events
-- date / time display
-	- respond to voice query
-- weather details display
-	- respond to voice query
-- user dictation [BVC]
-- google search lookup [BVC]
-- opening url in a new tab [BVC]
-- closing previously opened tabs [BVC]
-- copy / paste text
-- text file creation: making notes, adding title to the note, eg shopping list [BVC]
-- file saving [BVC]
-- constant logging to file
-- silent mode
-- fast mode
-- open module management
+- [ ] "sci-fi" UI, where the display is divided into several sections
+- [ ] basic audio player that is able to play, stop music, maybe change music [BVC]
+- [ ] status bar that reacts to user interaction
+- [ ] working google map
+- [ ] last commands list that records the events
+- [ ] date / time display
+	- [ ] respond to voice query
+- [ ] weather details display
+	- [ ] respond to voice query
+- [ ] user dictation [BVC]
+- [ ] google search lookup [BVC]
+- [ ] opening url in a new tab [BVC]
+- [ ] closing previously opened tabs [BVC]
+- [ ] copy / paste text
+- [ ] text file creation: making notes, adding title to the note, eg shopping list [BVC]
+- [ ] file saving [BVC]
+- [ ] constant logging of events into file
+- [ ] silent mode
+- [ ] fast mode
+- [ ] open module management
 
 ## Features++
 
-- sending files via bluetooth or email (php?) [BVC]
-- search locations on google maps [BVC]
-- voice controlled rich text editor [BVC]
-- maintenance mode [BVC]
-- face recognition
-- object detection
+- [ ] sending files via bluetooth or email (php?) [BVC]
+- [ ] search locations on google maps [BVC]
+- [ ] voice controlled rich text editor [BVC]
+- [ ] maintenance mode [BVC]
+- [ ] face recognition
+- [ ] object detection
