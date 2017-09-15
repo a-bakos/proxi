@@ -1,4 +1,4 @@
-# homebot project
+# Proxi
 
 [** Trello board **](https://trello.com/b/Qc2EXxbk)
 
