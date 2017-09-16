@@ -80,7 +80,12 @@ if (annyang) {
       // Listen for the title dictated by voice.
       // A small pause will terminate setting the title.
       annyang.addCallback('result', function(phrases) {
-        noteTitle.innerHTML = phrases[0] + " " + inlineDate();
+ 
+        // Capitalize the "first" letter.
+        // Use charAt(1) because for some reason it append a whitespace at the 0 position
+        var userTitle = phrases[0].charAt(1).toUpperCase() + phrases[0].slice(2);
+
+        noteTitle.innerHTML = userTitle + " " + inlineDate();
 
         if (noteTitle.innerHTML.length > 1) {
           annyang.removeCallback('result'); // This exits listening
