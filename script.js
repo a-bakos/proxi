@@ -355,36 +355,46 @@ var googleService = {
  * 
  */
 
-var video = document.querySelector('.stream-video');
 
-(function() {
-	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
-	var stream;
-	document.querySelector('.stream-start').onclick = function() {
-		if (!navigator.getUserMedia) {
-			alert('Sorry, this isn\'t happening for your browser.');
-			return;
-		}
-		navigator.getUserMedia(
-			{video: true, audio: false}, 
-			function(localMediaStream) {
-				stream = localMediaStream;
-				if (video.mozSrcObject !== undefined) {
-					video.mozSrcObject = stream;
-				} else {
-					video.src = (window.URL || window.webkitURL).createObjectURL(stream);
-				}
-				video.play();
-			},
-			function(e) {
-				alert('getUserMedia failed: Code ' + e.code);
-			}
-		);
-	}
+function openCamera() {
+  var video = document.querySelector('.stream-video');
+console.log("vedio");
+  navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+  var stream;
+  /*
+  document.querySelector('.stream-start').onclick = function() {
+    if (!navigator.getUserMedia) {
+      alert('Sorry, this isn\'t happening for your browser.');
+      return;
+    }
+    */
+  navigator.getUserMedia(
+    {
+      video: true,
+      audio: false
+    },
+    function(localMediaStream) {
+      stream = localMediaStream;
+      if (video.mozSrcObject !== undefined) {
+        video.mozSrcObject = stream;
+      }
+      else {
+        video.src = (window.URL || window.webkitURL).createObjectURL(stream);
+      }
+      video.play();
+    },
+
+    function(e) {
+      alert('getUserMedia failed: Code ' + e.code);
+    }
+
+  );
+/*
   document.querySelector('.stream-stop').onclick = function() {
 		if (stream) { stream.stop(); }
 	}
-})();
+*/
+};
 
 var url;
 var myWindow; // For new windows
@@ -399,6 +409,10 @@ if (annyang) {
 
   var searchCommands = {
 
+    'video': function() {
+      openCamera();
+    },
+    
     'open search': function() {
       voiceFeedback("Opening search.");
       url = googleService.url;
@@ -446,10 +460,10 @@ if (annyang) {
       'callback': voiceFeedback("You're welcome.")
     },
 */
-  var commands = {
+  var systemCommands = {
     // Reload page commands
-    'reload': function() { reloadPage(); },
-    'refresh': function() { reloadPage(); },
+    'reload':       function() { reloadPage(); },
+    'refresh':      function() { reloadPage(); },
     'flush memory': function() { reloadPage(); },
     'empty memory': function() { reloadPage(); },
     'buffer flush': function() { reloadPage(); },
@@ -516,7 +530,7 @@ if (annyang) {
 
   // Add commands to annyang
   annyang.addCommands(searchCommands);
-  annyang.addCommands(commands);
+  annyang.addCommands(systemCommands);
   annyang.addCommands(hiddenCommands);
   annyang.addCommands(noteCommands);
 
@@ -589,5 +603,5 @@ saver.addEventListener("click", function() {
  */
 
 // Full screen mode listeners:
-enterFullScreenMode(video, video);
-exitFullScreenMode(video, video);
+//enterFullScreenMode(video, video);
+//exitFullScreenMode(video, video);
