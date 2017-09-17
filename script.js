@@ -358,16 +358,9 @@ var myWindow; // For new windows
 if (annyang) {
 
   // Define high-level commands.
-  // First the text, and then the function it should call
 
   var searchCommands = {
 
-    '(open) camera': function() {
-      voiceFeedback("Opening camera");
-      loadScript("webCameraCommands", "js");
-      appendLastCommand("Camera opened")
-    },
-    
     'open search': function() {
       voiceFeedback("Opening search.");
       url = googleService.url;
@@ -451,6 +444,11 @@ if (annyang) {
     'online': function() {
       voiceFeedback("I'm back.");
       annyang.resume();
+    },
+
+    // Camera
+    '(open) (the) (web) camera': function() {
+      loadScript("webCameraCommands", "js");
     },
 
     // Audio player

@@ -4,48 +4,76 @@
 
 webCameraIsOpen = false;
 
-function openCamera() {
+
+// Build the whole camera element
+function buildCamera(targetLocation = screen.side1) {
+
+  var videoContainer = document.createElement("div");
+  videoContainer.classList.add("webcam-video-container");
+
+  var videoPlayer = document.createElement("video");
+  videoPlayer.classList.add("stream-video");
+  videoPlayer.setAttribute("autoplay", "");
+  videoPlayer.setAttribute("controls", "");
+
+  var videoButtonContainer = document.createElement("div");
+  videoButtonContainer.classList.add("webcam-buttons");
+
+  var videoButtonStreamStop = document.createElement("button");
+  videoButtonStreamStop.innerHTML = "Stop";
+  
+  videoButtonStreamStop.classList.add("stream-button", "stream-stop");
+
+  videoContainer.appendChild(videoPlayer);
+  videoContainer.appendChild(videoButtonContainer);
+  videoButtonContainer.appendChild(videoButtonStreamStop);
+
+  targetLocation.appendChild(videoContainer);
+}
+
+// Remove the camera from the DOM
+function removeCamera() {
+  var videoContainer = document.querySelector(".webcam-video-container");
+  videoContainer.parentElement.removeChild(videoContainer);
+}
+
+// Open the stream -- without audio
+function openCameraStream() {
   var video = document.querySelector('.stream-video');
-  console.log("vedio");
   navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
   var stream;
-  /*
-  document.querySelector('.stream-start').onclick = function() {
-    if (!navigator.getUserMedia) {
-      alert('Sorry, this isn\'t happening for your browser.');
-      return;
-    }
-    */
-  navigator.getUserMedia(
-    {
-      video: true,
-      audio: false
+
+  navigator.getUserMedia({
+    video: true,
+    audio: false
     },
+
     function(localMediaStream) {
       stream = localMediaStream;
-      if (video.mozSrcObject !== undefined) {
-        video.mozSrcObject = stream;
-      }
-      else {
-        video.src = (window.URL || window.webkitURL).createObjectURL(stream);
-      }
+      video.src = (window.URL || window.webkitURL).createObjectURL(stream);
       video.play();
     },
 
     function(e) {
       alert('getUserMedia failed: Code ' + e.code);
     }
-
   );
-/*
+
   document.querySelector('.stream-stop').onclick = function() {
-		if (stream) { stream.stop(); }
-	}
-*/
-};
+    soundPlayer(systemSounds.accept);
+    removeCamera();
+    appendLastCommand("Close camera")
+    removeScript("webCameraCommands");
+  };
+}
 
 (function intializeCamera() {
-  openCamera();
+  voiceFeedback("Opening camera");
+  buildCamera();
+  openCameraStream();
+  webCameraIsOpen = true;
+  soundPlayer(systemSounds.accept);
+  appendLastCommand("Camera opened")
 })();
 
 if (annyang) {
