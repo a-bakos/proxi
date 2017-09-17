@@ -16,7 +16,7 @@
 
 **`TBI`**: feature to be implemented
 
-## Modules and its features
+## Modules and their features
 
 ### Notepad
 
@@ -43,3 +43,18 @@ Voice command | Event | Status | Other info
 `stop music` | Stop the player | **`OK!`** | When the music has been stopped with this command, use `continue music` to resume.
 `continue music` | Resume stopped player | **`OK!`**
 `close audio player` | Close the audio player| **`OK!`**
+
+### Webcamera
+
+**Module:** `webCamCommands`
+
+Voice command | Event | Status | Other info
+------------- | ----- | ------ | ----------
+`(open) (the) (web) camera` | Open the web camera with instant streaming | **`OK!`**
+`close (the) (web) camera` | Close the camera | **`OK!`**
+
+
+
+
+
+
