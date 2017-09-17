@@ -92,3 +92,8 @@ if (annyang) {
   // Add commands to annyang
   annyang.addCommands(webCameraCommands);
 }
+
+// Full screen mode event listeners:
+var video = document.querySelector("video");
+enterFullScreenMode(video, video);
+exitFullScreenMode(video, video);
