@@ -86,7 +86,6 @@ if (annyang) {
       audioPlayerIsOpen = false;
       appendLastCommand("Close audio player")
       removeScript("audioPlayerCommands");
-      removeModuleFromDisplay("audioPlayer");
     }
   };
 

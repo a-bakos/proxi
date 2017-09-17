@@ -73,7 +73,8 @@ function openCameraStream() {
   openCameraStream();
   webCameraIsOpen = true;
   soundPlayer(systemSounds.accept);
-  appendLastCommand("Camera opened")
+  appendLastCommand("Camera opened");
+  
 })();
 
 if (annyang) {
@@ -84,7 +85,7 @@ if (annyang) {
       voiceFeedback("closing camera");
       removeCamera();
       webCameraIsOpen = false;
-      appendLastCommand("Close camera")
+      appendLastCommand("Close camera");
       removeScript("webCameraCommands");
     }
   };

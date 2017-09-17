@@ -3,7 +3,6 @@ function initCore() {
   soundPlayer(systemSounds.loadLong);
   displayDateTime();
   appendLastCommand("Core module loaded");
-  addModuleToDisplay("core");
 };
 
 

@@ -1,11 +1,5 @@
 "use strict";
 
-(function initApp() {
-  loadScript("coreModule", "js");
-})();
-
-
-
 /**
  * Defining screens
  */
@@ -47,7 +41,7 @@ var screen = {
  *
  * See also removeScript() function.
  */
-function loadScript(filename, folder) {
+function loadScript(filename, folder, moduleName) {
   var scriptElem = document.createElement("script");
   var body = document.querySelector("body");
   scriptElem.type = "text/javascript";
@@ -69,22 +63,16 @@ function loadScript(filename, folder) {
     console.log("Module has already been loaded.")
   }
 
+  function addModuleToList(filename) {
+    var moduleItem = document.createElement("div");
+    moduleItem.classList.add("display-module-item");
+    moduleItem.innerHTML = filename;
+    moduleName = "mod_" + filename;
+    moduleItem.id = moduleName;
+    screen.module.appendChild(moduleItem);
+  }
+  addModuleToList(filename);
 }
-
-function addModuleToDisplay(moduleName) {
-  var moduleItem = document.createElement("div");
-  moduleItem.classList.add("display-module-item");
-  moduleItem.innerHTML = moduleName;
-  moduleName = "mod_" + moduleName;
-  moduleItem.id = moduleName;
-  screen.module.appendChild(moduleItem);
-}
-function removeModuleFromDisplay(moduleName) {
-  var moduleToRemove = document.querySelector("#mod_" + moduleName)
-  moduleToRemove.parentElement.removeChild(moduleToRemove);
-}
-
-
 
 /**
  * Script removing
@@ -102,9 +90,20 @@ function removeScript(filename) {
   var body = document.querySelector("body");
   body.removeChild(scriptElem);
   console.log("Removed the " + filename + " script from body.");
+
+  function removeModuleFromList(filename) {
+    var moduleToRemove = document.querySelector("#mod_" + filename)
+    moduleToRemove.parentElement.removeChild(moduleToRemove);
+  }
+  removeModuleFromList(filename);
 }
 
 
+function initApp() {
+  loadScript("coreModule", "js");
+};
+
+initApp();
 
 /**
  * Annyang commands
@@ -214,7 +213,7 @@ if (annyang) {
     'load post office': function() {
       voiceFeedback("loaded");
       appendLastCommand("Loaded email module");
-      loadScript("hiddenCommands", "js")
+      loadScript("hiddenCommands", "js", "hidden")
     }
   };
 
@@ -222,7 +221,6 @@ if (annyang) {
   var audioPlayerCommands = {
     'play music': function() {
       loadScript("audioPlayerCommands", "js");
-      addModuleToDisplay("audioPlayer");
     }
   };
 
