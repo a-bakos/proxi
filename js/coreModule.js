@@ -1,13 +1,11 @@
-/**
- * Defining system soundpaths
- */
-
 function initCore() {
   appendLastCommand("Core module requested");
   soundPlayer(systemSounds.loadLong);
   displayDateTime();
   appendLastCommand("Core module loaded");
+  addModuleToDisplay("core");
 };
+
 
 /**
  * Defining system sounds & paths
@@ -48,18 +46,7 @@ function reloadPage() {
   appendLastCommand("Flushing memory");
 }
 
-/**
- * Defining screens
- */
-var screen = {
-  // Main action screens
-  main1: document.querySelector(".main-action-screen-1"),
-  main2: document.querySelector(".main-action-screen-2"),
-  // Side screens
-  side1: document.querySelector(".side-screen-1"),
-  side2: document.querySelector(".side-screen-2"),
-  side3: document.querySelector(".side-screen-3")
-};
+
 
 
 /**

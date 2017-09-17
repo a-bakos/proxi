@@ -4,6 +4,22 @@
   loadScript("coreModule", "js");
 })();
 
+
+
+/**
+ * Defining screens
+ */
+var screen = {
+  // Main action screens
+  main1: document.querySelector(".main-action-screen-1"),
+  main2: document.querySelector(".main-action-screen-2"),
+  module: document.querySelector(".tempbox"),
+  // Side screens
+  side1: document.querySelector(".side-screen-1"),
+  side2: document.querySelector(".side-screen-2"),
+  side3: document.querySelector(".side-screen-3")
+};
+
 /**
  * Script loading
  *
@@ -52,7 +68,23 @@ function loadScript(filename, folder) {
   else {
     console.log("Module has already been loaded.")
   }
+
 }
+
+function addModuleToDisplay(moduleName) {
+  var moduleItem = document.createElement("div");
+  moduleItem.classList.add("display-module-item");
+  moduleItem.innerHTML = moduleName;
+  moduleName = "mod_" + moduleName;
+  moduleItem.id = moduleName;
+  screen.module.appendChild(moduleItem);
+}
+function removeModuleFromDisplay(moduleName) {
+  var moduleToRemove = document.querySelector("#mod_" + moduleName)
+  moduleToRemove.parentElement.removeChild(moduleToRemove);
+}
+
+
 
 /**
  * Script removing
@@ -73,35 +105,6 @@ function removeScript(filename) {
 }
 
 
-/**
- * Full screen mode
- *
- * FullScreen API -- it has to be triggered by the user, there is no way of
- * loading the page or an element right into full screen mode.
- *
- * elementToClick is the element that has to be clicked to trigger full screen
- * mode on targetElement.
- * Obviously, these elements have to be defined in a variable upfront.
- */
-function enterFullScreenMode(elementToClick, targetElement) {
-  elementToClick.addEventListener("click", function() {
-    //targetElement.classList.add("in-full-screen-mode");
-    var requestFullScreen = targetElement.requestFullscreen || targetElement.webkitRequestFullScreen;
-    requestFullScreen.call(targetElement);
-  });
-}
-
-function exitFullScreenMode(elementToClick, targetElement) {
-  elementToClick.addEventListener("click", function() {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-    else if (document.webkitCancelFullScreen) {
-      document.webkitCancelFullScreen();
-    }
-  });
-}
-
 
 /**
  * Annyang commands
@@ -116,7 +119,7 @@ if (annyang) {
       voiceFeedback("Opening search.");
       url = googleService.url;
       myWindow = window.open(url, "myWindow");
-      appendLastCommand("Search opened")
+      appendLastCommand("Search opened");
     },
 
     'close search': function() {
@@ -219,6 +222,7 @@ if (annyang) {
   var audioPlayerCommands = {
     'play music': function() {
       loadScript("audioPlayerCommands", "js");
+      addModuleToDisplay("audioPlayer");
     }
   };
 

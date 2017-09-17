@@ -302,4 +302,15 @@ body {
   box-shadow: 0 0 10px 2px #a0dff5 inset, 0 0 10px 2px #a0dff5;
 }
 
+/* line 36, C:/Git/ai/sass/style.scss */
+.display-module-item {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  line-height: 2em;
+  font-family: monospace;
+  font-size: 10px;
+  color: white;
+  margin-bottom: 2%;
+}
+
 /*# sourceMappingURL=../style.map */
