@@ -5,5 +5,9 @@
   width: $main-screen-width;
   height: $main-screen-2-height;
   
-  background-color: hotpink;
+  @include base-screen-state;
+
+  &:hover {
+    opacity: 1;
+    }
   }

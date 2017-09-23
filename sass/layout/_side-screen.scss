@@ -5,8 +5,6 @@
   width: $side-screen-container-width;
   height: $side-screen-container-height;
   
-  background-color: darkorchid;
-  
   .side-screen {
     position: relative;
     top: 0;
@@ -16,12 +14,18 @@
     }
   
   .side-screen-1 {
-    background-color: darkgoldenrod
+    background: rgba(166,230,244,0.25);
+    -webkit-clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+            clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
     }
   .side-screen-2 {
-    background-color: darkolivegreen
+    background: rgba(166,230,244,0.25);
+    -webkit-clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+            clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
     }
   .side-screen-3 {
-    background-color: darkorange;
+    background: rgba(166,230,244,0.25);
+    -webkit-clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+            clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
     }
   } // .side-screen-container

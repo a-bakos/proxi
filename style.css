@@ -17,12 +17,78 @@
 body {
   width: 100vw;
   font-size: 20px;
+  background-color: #061526;
 }
 
-/* line 18, C:/Git/ai/sass/base/_base.scss */
+/* line 21, C:/Git/ai/sass/base/_base.scss */
 .container {
   width: 100vw;
   height: 100vh;
+  opacity: 1;
+}
+
+/* line 27, C:/Git/ai/sass/base/_base.scss */
+.grid-container {
+  z-index: -50;
+}
+
+/* line 31, C:/Git/ai/sass/base/_base.scss */
+.grid-col-container {
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: repeat(10, calc(100% / 10));
+}
+
+/* line 41, C:/Git/ai/sass/base/_base.scss */
+.grid-row-container {
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  grid-template-rows: repeat(10, calc(100% / 10));
+}
+
+/* line 53, C:/Git/ai/sass/base/_base.scss */
+.grid-row {
+  border: 1px dotted rgba(255, 255, 255, 0.035);
+}
+
+@font-face {
+  font-family: "pdark";
+  src: url(files/fonts/pdark.ttf);
+}
+
+@font-face {
+  font-family: "rektek";
+  src: url(files/fonts/Rektec.otf);
+}
+
+@font-face {
+  font-family: "printer";
+  src: url(files/fonts/F25_Bank_Printer.ttf);
+}
+
+@font-face {
+  font-family: "circo";
+  src: url(files/fonts/modern_squared2.ttf);
+}
+
+/* line 75, C:/Git/ai/sass/base/_base.scss */
+.grid-title {
+  position: absolute;
+  width: 100vw;
+  top: 33.33333vh;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.05);
+  font-family: "rektek", sans-serif;
+  text-shadow: 0 0 100px rgba(255, 255, 255, 0.015);
+  font-size: 15em;
 }
 
 /**
@@ -50,18 +116,6 @@ body {
   transition: 1s;
 }
 
-/* line 24, C:/Git/ai/sass/layout/_status-bar.scss */
-.status-bar-item:after {
-  display: block;
-  position: absolute;
-  top: 0;
-  content: "";
-  border-top: 1.25rem solid red;
-  border-right: 1.25rem solid green;
-  border-bottom: 1.25rem solid black;
-  border-left: 1.25rem solid yellow;
-}
-
 /* line 1, C:/Git/ai/sass/layout/_side-screen.scss */
 .side-screen-container {
   position: absolute;
@@ -69,10 +123,9 @@ body {
   left: 65vw;
   width: 35vw;
   height: 95vh;
-  background-color: darkorchid;
 }
 
-/* line 10, C:/Git/ai/sass/layout/_side-screen.scss */
+/* line 8, C:/Git/ai/sass/layout/_side-screen.scss */
 .side-screen-container .side-screen {
   position: relative;
   top: 0;
@@ -81,30 +134,88 @@ body {
   height: 31.66667vh;
 }
 
-/* line 18, C:/Git/ai/sass/layout/_side-screen.scss */
+/* line 16, C:/Git/ai/sass/layout/_side-screen.scss */
 .side-screen-container .side-screen-1 {
-  background-color: darkgoldenrod;
+  background: rgba(166, 230, 244, 0.25);
+  -webkit-clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+  clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
 }
 
 /* line 21, C:/Git/ai/sass/layout/_side-screen.scss */
 .side-screen-container .side-screen-2 {
-  background-color: darkolivegreen;
+  background: rgba(166, 230, 244, 0.25);
+  -webkit-clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+  clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
 }
 
-/* line 24, C:/Git/ai/sass/layout/_side-screen.scss */
+/* line 26, C:/Git/ai/sass/layout/_side-screen.scss */
 .side-screen-container .side-screen-3 {
-  background-color: darkorange;
+  background: rgba(166, 230, 244, 0.25);
+  -webkit-clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+  clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
 }
 
-/* line 1, C:/Git/ai/sass/layout/_main-screen-1.scss */
+/* line 7, C:/Git/ai/sass/layout/_main-screen-1.scss */
 .main-action-screen-1 {
   position: absolute;
   top: 5vh;
-  left: 5vw;
-  width: 60vw;
+  left: 6vw;
+  width: 58vw;
   height: 60vh;
   overflow-y: auto;
-  background: blue;
+  padding: 2%;
+  color: white;
+  opacity: 0.75;
+  transition: 0.25s;
+}
+
+/* line 18, C:/Git/ai/sass/layout/_main-screen-1.scss */
+.main-action-screen-1:hover {
+  opacity: 1;
+}
+
+/* line 22, C:/Git/ai/sass/layout/_main-screen-1.scss */
+.main-action-screen-1:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgba(166, 230, 244, 0.25);
+  -webkit-clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+  clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+  /*
+    border-top: 1.25rem solid transparent;
+    border-right: 1.25rem solid transparent;
+    border-bottom: 1.25rem solid #2F89BE;
+    border-left: 1.25rem solid transparent;
+*/
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* line 48, C:/Git/ai/sass/layout/_main-screen-1.scss */
+.screen-title {
+  font-family: "printer", monospace;
+  padding: 0 1%;
+  font-size: 14px;
+  text-shadow: 0 0 10px black;
+  background-image: linear-gradient(45deg, rgba(47, 137, 190, 0.5) 95%, transparent 1px);
+  border-bottom: 1px solid #256c95;
+  border-top-left-radius: 10px;
+}
+
+/* line 58, C:/Git/ai/sass/layout/_main-screen-1.scss */
+.text-content {
+  padding: 1%;
+  font-family: "circo", "Calibri";
+  font-size: 22px;
+  letter-spacing: 1px;
+  background-image: linear-gradient(-225deg, rgba(166, 230, 244, 0.1) 95%, transparent 1px);
+  box-shadow: inset 100px 0 0 0 rgba(255, 0, 0, 0.25);
+  border-bottom-left-radius: 10px;
 }
 
 /* line 1, C:/Git/ai/sass/layout/_main-screen-2.scss */
@@ -114,7 +225,14 @@ body {
   left: 5vw;
   width: 60vw;
   height: 35vh;
-  background-color: hotpink;
+  color: white;
+  opacity: 0.75;
+  transition: 0.25s;
+}
+
+/* line 10, C:/Git/ai/sass/layout/_main-screen-2.scss */
+.main-action-screen-2:hover {
+  opacity: 1;
 }
 
 /* line 2, C:/Git/ai/sass/components/_audio-player.scss */
@@ -228,11 +346,38 @@ body {
 .location-map {
   width: 100%;
   height: 250px;
+  opacity: 0.75;
+  transition: 0.25s;
 }
 
-/* line 10, C:/Git/ai/sass/components/_location-display.scss */
+/* line 11, C:/Git/ai/sass/components/_location-display.scss */
+.location-map:hover {
+  opacity: 1;
+}
+
+/* line 16, C:/Git/ai/sass/components/_location-display.scss */
 .side-screen {
   overflow-Y: auto;
+}
+
+/* line 1, C:/Git/ai/sass/components/_manual-command.scss */
+.manual-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5vh;
+}
+
+/* line 8, C:/Git/ai/sass/components/_manual-command.scss */
+#command-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 2em;
+  background: rgba(255, 255, 255, 0.05);
+  font-family: monospace;
 }
 
 /* line 4, C:/Git/ai/sass/components/_notepad.scss */
@@ -290,19 +435,17 @@ body {
   outline: none;
 }
 
-/* line 22, C:/Git/ai/sass/style.scss */
+/* line 23, C:/Git/ai/sass/style.scss */
 .tempbox {
   position: absolute;
   top: 5vh;
   left: 0;
   width: 5vw;
   height: 95vh;
-  background: black;
-  border-right: 2px solid #a0dff5;
-  box-shadow: 0 0 10px 2px #a0dff5 inset, 0 0 10px 2px #a0dff5;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-/* line 36, C:/Git/ai/sass/style.scss */
+/* line 33, C:/Git/ai/sass/style.scss */
 .display-module-item {
   width: 100%;
   background: rgba(255, 255, 255, 0.2);
@@ -311,6 +454,7 @@ body {
   font-size: 10px;
   color: white;
   margin-bottom: 2%;
+  padding: 10% 5%;
 }
 
 /*# sourceMappingURL=../style.map */

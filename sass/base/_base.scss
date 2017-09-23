@@ -12,10 +12,77 @@
 body {
   width: $full-width;
   font-size: 20px; // base font size
+  background-color: #061526;
+
+//  font-family: "";
   }
 
 // Everything is contained within this element
 .container {
   width: $full-width;
   height: $full-height;
+  opacity: 1;
   }
+
+.grid-container {
+  z-index: -50;
+  }
+
+.grid-col-container {
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: repeat(10, calc(100% / 10));
+  }
+
+.grid-row-container {
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  grid-template-rows: repeat(10, calc(100% / 10));
+  }
+
+.grid-col {}
+
+.grid-row {
+  border: 1px dotted rgba(255,255,255,0.035);
+  }
+
+@font-face {
+  font-family: "pdark";
+  src: url(files/fonts/pdark.ttf);
+}
+@font-face {
+  font-family: "rektek";
+  src: url(files/fonts/Rektec.otf);
+}
+@font-face {
+  font-family: "printer";
+  src: url(files/fonts/F25_Bank_Printer.ttf);
+}
+@font-face {
+  font-family: "circo";
+  //src: url(files/fonts/F25_Bank_Printer.ttf);
+  src: url(files/fonts/modern_squared2.ttf);
+}
+
+.grid-title {
+  position: absolute;
+  width: 100vw;
+  top: (100vh / 3);
+  text-align: center;
+  
+  color: rgba(255,255,255,0.05);
+  font-family: "rektek", sans-serif;
+
+  text-shadow:
+    0 0 100px rgba(255,255,255,0.015);
+  font-size: 15em;
+  
+}

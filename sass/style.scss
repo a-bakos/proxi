@@ -14,6 +14,7 @@
 @import "components/last-commands";
 @import "components/listening-status";
 @import "components/location-display";
+@import "components/manual-command";
 @import "components/notepad";
 @import "components/webcamera";
 
@@ -26,11 +27,7 @@
   width: $tempbox-width;
   height: $tempbox-height;
 
-  background: black;
-  border-right: 2px solid #a0dff5;
-  box-shadow:
-    0 0 10px 2px #a0dff5 inset,
-    0 0 10px 2px #a0dff5;
+  background: rgba(255,255,255,0.05);
   }
 
 .display-module-item {
@@ -41,4 +38,5 @@
   font-size: 10px;
   color: white;
   margin-bottom: 2%;
+  padding: 10% 5%;
 }

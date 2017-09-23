@@ -1,10 +1,70 @@
+@mixin base-screen-state {
+  color: rgba(255,255,255,1);
+  opacity: 0.75;
+  transition: 0.25s;
+  }
+
 .main-action-screen-1 {
   position: absolute;
   top: $status-bar-height;
-  left: $tempbox-width;
-  width: $main-screen-width;
+  left: $tempbox-width + 1vw;
+  width: $main-screen-width - 2vw;
   height: $main-screen-1-height;
 
   overflow-y: auto;
-  background: blue;
+  padding: 2%;
+  @include base-screen-state;
+
+  &:hover {
+    opacity: 1;
+    }
+
+  &:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+
+  //background-image: linear-gradient(45deg, rgba(166,230,244,0.25) 95%, transparent 1px);
+background: rgba(166,230,244,0.25);
+-webkit-clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+        clip-path: polygon(100% 0, 100% 15%, 95% 30%, 95% 70%, 100% 85%, 100% 100%, 0 100%, 0 0);
+/*
+    border-top: 1.25rem solid transparent;
+    border-right: 1.25rem solid transparent;
+    border-bottom: 1.25rem solid #2F89BE;
+    border-left: 1.25rem solid transparent;
+*/
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    }
   }
+
+////////////////
+
+.screen-title {
+  font-family: "printer", monospace;
+  padding: 0 1%;
+  font-size: 14px;
+  text-shadow: 0 0 10px black;
+  background-image: linear-gradient(45deg, rgba(47,137,190,0.5) 95%, transparent 1px);
+  border-bottom: 1px solid darken(#2F89BE, 10%);
+  border-top-left-radius: 10px;
+  }
+
+.text-content {
+  padding: 1%;
+  //border-left: 1px solid #2F89BE;
+  //border-left: 1px solid darken(#2F89BE, 10%);
+  font-family: "circo", "Calibri";
+  font-size: 22px;
+  letter-spacing: 1px;
+  background-image: linear-gradient(-225deg, rgba(166,230,244,0.1) 95%, transparent 1px);
+  box-shadow:
+    inset 100px 0 0 0 rgba(255,0,0,0.25);
+  border-bottom-left-radius: 10px;
+  }
+

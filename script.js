@@ -102,7 +102,6 @@ function removeScript(filename) {
 function initApp() {
   loadScript("coreModule", "js");
 };
-
 initApp();
 
 /**
@@ -146,12 +145,6 @@ if (annyang) {
       urlInput = "http://" + urlInput;
       myWindow = window.open(urlInput, "myWindow");
       appendLastCommand("Go to url: <a href=\"" + urlInput + "\" target=_blank title=\"link from voice input\">" + urlInput + "</a>");
-    },
-    
-    // filesaver test
-    'save': function() {
-      saveAs(blob, "hello world.txt");
-      console.log("save?");
     }
   };
 
@@ -290,28 +283,3 @@ recognition.onresult = function(event) {
 recognition.start();
 
 */
-
-
-
-
-/**
- * File saver things
- */
-var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
-
-var saver = document.querySelector(".saver");
-
-saver.addEventListener("click", function() {
-  saveAs(blob, "hello world.txt");
-}, false)
-
-
-
-
-
-
-/**
- * Event listeners
- */
-
-
