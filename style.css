@@ -56,7 +56,7 @@ body {
 
 /* line 53, C:/Git/ai/sass/base/_base.scss */
 .grid-row {
-  border: 1px dotted rgba(255, 255, 255, 0.035);
+  border: 1px dotted rgba(255, 255, 255, 0.045);
 }
 
 @font-face {
