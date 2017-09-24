@@ -1,8 +1,9 @@
 .manual-input {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 5vh;
+  left: $tempbox-width;
+  width: $main-screen-width;
+  height: $manual-input-height;
   }
 
 #command-input {

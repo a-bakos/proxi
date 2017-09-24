@@ -9,9 +9,10 @@ $status-bar-height: 5vh;
 $tempbox-width: 5vw;
 $tempbox-height: ($full-height - $status-bar-height);
 
+$manual-input-height: 5vh;
+
 $main-screen-width: 60vw;
-$main-screen-1-height: 60vh;
-$main-screen-2-height: (($full-height - $main-screen-1-height) - $status-bar-height);
+$main-screen-1-height: $full-height - ($status-bar-height + $manual-input-height);
 
 $side-screen-container-width: (($full-width - $tempbox-width) - $main-screen-width);
 $side-screen-container-height: ($full-height - $status-bar-height);

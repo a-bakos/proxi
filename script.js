@@ -6,7 +6,6 @@
 var screen = {
   // Main action screens
   main1: document.querySelector(".main-action-screen-1"),
-  main2: document.querySelector(".main-action-screen-2"),
   module: document.querySelector(".tempbox"),
   // Side screens
   side1: document.querySelector(".side-screen-1"),

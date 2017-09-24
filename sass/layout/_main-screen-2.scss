@@ -6,6 +6,8 @@
   height: $main-screen-2-height;
   
   @include base-screen-state;
+  
+  background: red;
 
   &:hover {
     opacity: 1;
